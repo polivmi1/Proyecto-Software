@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Checkeo {
 
-	//otra prueba
 	private int id;
 	private String description;
 
