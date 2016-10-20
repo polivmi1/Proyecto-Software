@@ -3,7 +3,7 @@ package com.SecurVision.logic;
 import java.util.Date;
 
 public class FranjaHoraria {
-
+	//pruebaaaaaaa
 	private Date entrada;
 	private Date salida;
 
