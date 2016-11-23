@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorVentanaPrincipal">
+   <children>
+      <SplitPane dividerPositions="0.07801418439716312, 0.3735224586288416" orientation="VERTICAL" prefHeight="425.0" prefWidth="608.0">
+        <items>
+            <MenuBar prefHeight="29.0" prefWidth="608.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#cerrar" text="Cerrar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Configurar">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Usuario" />
+                        <MenuItem mnemonicParsing="false" text="Zona" />
+                        <MenuItem mnemonicParsing="false" text="Nivel" />
+                        <MenuItem mnemonicParsing="false" text="Lista Negra" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Vista">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Zoom" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Ayuda">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Sobre SecurVision" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="158.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@LogoPre.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="223.0" layoutY="50.0" text="NOMBRE DE LA EMPRESA" />
+                  <Label fx:id="fechalabel" layoutX="499.0" layoutY="42.0" text="Fecha" />
+                  <Label fx:id="horalabel" layoutX="499.0" layoutY="59.0" text="hora" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.7334437086092715" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ScrollPane prefHeight="259.0" prefWidth="439.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="437.0">
+                                       <children>
+                                          <Label layoutX="4.0" layoutY="-4.0" prefHeight="29.0" prefWidth="401.0" text="CHECKEOS" />
+                                          <TableView layoutY="23.0" prefHeight="270.0" prefWidth="421.0">
+                                            <columns>
+                                              <TableColumn prefWidth="102.0" text="Nombre" />
+                                              <TableColumn prefWidth="66.0" text="Zona" />
+                                                <TableColumn prefWidth="92.0" text="Hora" />
+                                                <TableColumn prefWidth="75.0" text="Guardia" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="162.0" />
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
