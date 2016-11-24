@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface ICheckeoDAO {
 
-	//public Checkeo encontrarCheckeoPorCod(String cod)throws DAOExcepcion;
-	//public void crearCheckeo(Checkeo p)throws DAOExcepcion;
-	//public List<Checkeo> listarCheckeos() throws DAOExcepcion;
+	public Checkeo encontrarCheckeoPorId(int id)throws DAOExcepcion;
+	public List<Checkeo> listarCheckeos() throws DAOExcepcion;
 }
 

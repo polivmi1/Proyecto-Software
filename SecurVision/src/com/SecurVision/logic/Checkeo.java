@@ -1,51 +1,76 @@
 package com.SecurVision.logic;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import javafx.beans.property.*;
 
 public class Checkeo {
 
-	private int id;
-	private String description;
-
-	private Persona persona;
-	private ArrayList<Zona> zonas = new ArrayList<Zona>();
+	private IntegerProperty idCheckeo;
+	private StringProperty PersonaDni;		//actualizar a tipo Persona
+	private IntegerProperty ZonaId;				//actualizar a tipo Zona
+	private ObjectProperty<Date> Hora;
+	private BooleanProperty Valido;
 
 	//Constructor
-	public Checkeo( int id, String description){
-		this.id = id;
-		this.description = description;
+	public Checkeo( int idCheckeo, String PersonaDni, int ZonaId, Date Hora, boolean Valido){
+		this.idCheckeo = new SimpleIntegerProperty(idCheckeo);
+		this.PersonaDni = new SimpleStringProperty(PersonaDni);
+		this.ZonaId = new SimpleIntegerProperty(ZonaId);
+		this.Hora = new SimpleObjectProperty<Date>(Hora);
+		this.Valido = new SimpleBooleanProperty(Valido);
 	}
 
 		//Getters and Setters
-	public int getId() {
-		return id;
+	public int getIdCheckeo() {
+		return idCheckeo.get();
 	}
+	public void setIdCheckeo(int idCheckeo) {
+		this.idCheckeo.set(idCheckeo);
+	}
+	public IntegerProperty idCheckeoProperty() {
+        return idCheckeo;
+    }
+	
+	public String getPersonaDni() {
+		return PersonaDni.get();
+	}
+	public void setPersonaDni(String PersonaDni) {
+		this.PersonaDni.set(PersonaDni);
+	}
+	public StringProperty PersonaDniProperty() {
+        return PersonaDni;
+    }
 
-	public void setId(int id) {
-		this.id = id;
+	public int getZonaId() {
+		return ZonaId.get();
 	}
-
-	public String getDescription() {
-		return description;
+	public void setZonaId(int ZonaId) {
+		this.ZonaId.set(ZonaId);
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public IntegerProperty ZonaIdProperty() {
+        return ZonaId;
+    }
+	
+	public Date getHora() {
+		return Hora.get();
 	}
-
-	public Persona getPersona() {
-		return persona;
+	public void setHora(Date Hora) {
+		this.Hora.set(Hora);
 	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public ObjectProperty<Date> HoraProperty() {
+        return Hora;
+    }
+	
+	public boolean getValido() {
+		return Valido.get();
 	}
-
-	public ArrayList<Zona> getZonas() {
-		return zonas;
+	public void setValido(boolean Valido) {
+		this.Valido.set(Valido);
 	}
-
-	public void setZonas(ArrayList<Zona> zonas) {
-		this.zonas = zonas;
-	}
+	public BooleanProperty ValidoProperty() {
+        return Valido;
+    }
+	
 }

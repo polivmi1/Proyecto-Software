@@ -61,12 +61,12 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="437.0">
                                        <children>
                                           <Label layoutX="4.0" layoutY="-4.0" prefHeight="29.0" prefWidth="401.0" text="CHECKEOS" />
-                                          <TableView layoutY="23.0" prefHeight="270.0" prefWidth="421.0">
+                                          <TableView fx:id="CheckeoTable" layoutY="23.0" prefHeight="270.0" prefWidth="421.0">
                                             <columns>
-                                              <TableColumn prefWidth="102.0" text="Nombre" />
-                                              <TableColumn prefWidth="66.0" text="Zona" />
-                                                <TableColumn prefWidth="92.0" text="Hora" />
-                                                <TableColumn prefWidth="75.0" text="Guardia" />
+                                              <TableColumn fx:id="IdCheckeoColumn" prefWidth="102.0" text="Id" />
+                                              <TableColumn fx:id="PersonaDniColumn" prefWidth="66.0" text="Persona" />
+                                                <TableColumn fx:id="ZonaIdColumn" prefWidth="92.0" text="Zona" />
+                                                <TableColumn fx:id="HoraColumn" prefWidth="75.0" text="Hora" />
                                             </columns>
                                              <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
