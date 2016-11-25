@@ -24,7 +24,7 @@
             <Label layoutX="52.0" layoutY="70.0" text="USUARIOS" />
             <Button layoutX="389.0" layoutY="346.0" mnemonicParsing="false" text="Cancelar" />
             <Button layoutX="481.0" layoutY="346.0" mnemonicParsing="false" onAction="#Aceptar" text="Aceptar" />
-            <Button layoutX="441.0" layoutY="257.0" mnemonicParsing="false" text="Añadir usuario" />
+            <Button layoutX="441.0" layoutY="257.0" mnemonicParsing="false" onAction="#CrearUser" text="Añadir usuario" />
          </children>
       </Pane>
    </children>

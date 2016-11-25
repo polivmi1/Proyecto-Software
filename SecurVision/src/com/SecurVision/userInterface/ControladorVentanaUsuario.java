@@ -23,6 +23,11 @@ public class ControladorVentanaUsuario {
     	mainApp.showVentanaPrincipal();
     }
     
+    @FXML
+    private void CrearUser(){
+    	mainApp.showDialogUsuario();
+    }
+    
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         

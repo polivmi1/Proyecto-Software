@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -102,6 +103,34 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+	
+	public void showDialogUsuario() {
+	    try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("DialogCrearUsuario.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Crear Usuario");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	        ControladorDialogCrearUsuario controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+	        
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        
+	    }
+	}
 	
 	public Stage getPrimaryStage() {
         return primaryStage;
