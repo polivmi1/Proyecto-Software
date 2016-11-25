@@ -71,7 +71,7 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("loggin.fxml"));
+            loader.setLocation(MainApp.class.getResource("VentanaLogin.fxml"));
             AnchorPane VentanaLogin = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
@@ -84,6 +84,25 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+	
+	public void showVentanaUsuario() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("VentanaUsuario.fxml"));
+            AnchorPane VentanaUsuario = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(VentanaUsuario);
+            
+            ControladorVentanaUsuario controll = loader.getController();
+            controll.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public Stage getPrimaryStage() {
         return primaryStage;
     }

@@ -23,8 +23,8 @@ public class ControladorPrincipal {
 		mainApp.getPrimaryStage().close();
 	}
 	@FXML
-    private void VentanaPrincipal(){
-		mainApp.showVentanaPrincipal();
+    private void VentanaUsuario(){
+		mainApp.showVentanaUsuario();
 	}
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
