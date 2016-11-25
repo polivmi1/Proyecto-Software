@@ -7,37 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorVentanaPrincipal">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorVentanaPrincipal">
    <children>
-      <SplitPane dividerPositions="0.07801418439716312, 0.3735224586288416" orientation="VERTICAL" prefHeight="425.0" prefWidth="608.0">
+      <SplitPane dividerPositions="0.30969267139479906" orientation="VERTICAL" prefHeight="385.0" prefWidth="608.0">
         <items>
-            <MenuBar prefHeight="29.0" prefWidth="608.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Archivo">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#cerrar" text="Cerrar" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Configurar">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Usuario" />
-                        <MenuItem mnemonicParsing="false" text="Zona" />
-                        <MenuItem mnemonicParsing="false" text="Nivel" />
-                        <MenuItem mnemonicParsing="false" text="Lista Negra" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Vista">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Zoom" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Ayuda">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Sobre SecurVision" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ImageView fitHeight="103.0" fitWidth="158.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">

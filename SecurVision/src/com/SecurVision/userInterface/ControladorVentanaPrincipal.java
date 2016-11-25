@@ -32,13 +32,16 @@ public class ControladorVentanaPrincipal {
     
     
     private MainApp mainApp;
+    
     private Date date = new Date();
     
     public ControladorVentanaPrincipal(){
     }
     
+    
     @FXML
     private void initialize(){
+    		
     		horaFecha();
     		
             IdCheckeoColumn.setCellValueFactory(cellData -> cellData.getValue().idCheckeoProperty().asObject());
@@ -46,11 +49,6 @@ public class ControladorVentanaPrincipal {
             ZonaIdColumn.setCellValueFactory(cellData -> cellData.getValue().ZonaIdProperty().asObject());
             HoraColumn.setCellValueFactory(cellData -> cellData.getValue().HoraProperty());
             
-    }
-    
-    @FXML
-    private void cerrar(){
-    	mainApp.getPrimaryStage().close();
     }
     
     public void setMainApp(MainApp mainApp) {

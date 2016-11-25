@@ -9,9 +9,31 @@ import javafx.stage.Stage;
 
 
 public class ControladorPrincipal {
-		 private static final String LOGGIN_ADMIN= "loggin-admin.fxml";
+	
+	private MainApp mainApp;
+	
+	public ControladorPrincipal(){
+    }
+	@FXML
+	private void initialize(){
+		
+	}
+	@FXML
+    private void Cerrar(){
+		mainApp.getPrimaryStage().close();
+	}
+	@FXML
+    private void VentanaPrincipal(){
+		mainApp.showVentanaPrincipal();
+	}
+	public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+}
+		
+	/*private static final String LOGGIN_ADMIN= "loggin-admin.fxml";
 		 private static final String VER_PERFIL_USUARIO = "ver-perfil-usuario.fxml";
-		 //TODO añadir constantes de tipo String para la vistas correspondientes a los
+		 //TODO aï¿½adir constantes de tipo String para la vistas correspondientes a los
 		//casos de uso Crear Reserva y Listar Reservas de una Sucursal
 		 private Stage primaryStage;
 		 @FXML
@@ -36,3 +58,4 @@ public class ControladorPrincipal {
 		primaryStage, ControladorPrincipal.this);
 		 }
 		}
+*/
