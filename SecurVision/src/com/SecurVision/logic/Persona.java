@@ -8,17 +8,17 @@ public class Persona {
 	private String nombre;
 	private String apellidos;
 
-	private ArrayList<Imagen> imagenes = new ArrayList<Imagen>();
+	private ArrayList<Imagen> imagenes;
 	private ArrayList<Checkeo> checkeos = new ArrayList<Checkeo>();
 	private HorarioEmpleo horario;
 	private Nivel nivel;
 
 	//Constructor
-	public Persona (String dni, String nombre, String apellidos, ArrayList<Imagen> img){
+	public Persona (String dni, String nombre, String apellidos){
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.imagenes = img;
+		this.imagenes = new ArrayList<Imagen>();
 	}
 
 		//Getters and Setters
