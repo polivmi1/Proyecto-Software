@@ -2,6 +2,7 @@ package com.SecurVision.persistencia;
 
 import java.util.*;
 import com.SecurVision.logic.*;
+import com.SecurVision.persistenciaDTO.PersonaDTO;
 import com.SecurVision.exceptions.*;
 
 public class DAL {
@@ -71,11 +72,11 @@ public class DAL {
 		 /*
 		 public void crearCheckeo(Checkeo chk) throws DAOExcepcion{
 			 checkeoDAO.crearCheckeo(chk);
-		 }
-
-		 public void crearPersona(Persona p) throws DAOExcepcion{
-			 personaDAO.crearPersona(p);
 		 }*/
+
+		 public void crearPersona(PersonaDTO p) throws DAOExcepcion{
+			 personaDAO.crearPersona(p);
+		 }
 
 		 public void crearZona(Zona z) throws DAOExcepcion{
 			 zonaDAO.crearZona(z);
