@@ -71,11 +71,11 @@ public class DAL {
 		 /*
 		 public void crearCheckeo(Checkeo chk) throws DAOExcepcion{
 			 checkeoDAO.crearCheckeo(chk);
-		 }*/
+		 }
 
 		 public void crearPersona(Persona p) throws DAOExcepcion{
 			 personaDAO.crearPersona(p);
-		 }
+		 }*/
 
 		 public void crearZona(Zona z) throws DAOExcepcion{
 			 zonaDAO.crearZona(z);
