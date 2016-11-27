@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorPrincipal">
+<BorderPane id="menu" prefHeight="440.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorPrincipal">
    <top>
-      <MenuBar fx:id="menu" BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menu" stylesheets="@main.css" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Archivo">
             <items>
@@ -29,4 +32,15 @@
         </menus>
       </MenuBar>
    </top>
+   <right>
+      <HBox translateX="-130.0" translateY="-60.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#btnMinimize" stylesheets="@main.css" text="-" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#Cerrar" stylesheets="@main.css" text="X" />
+         </children>
+      </HBox>
+   </right>
 </BorderPane>

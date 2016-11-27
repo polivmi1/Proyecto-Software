@@ -1,24 +1,23 @@
 package com.SecurVision.userInterface;
 
-import com.SecurVision.exceptions.LogicException;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 
 public class ControladorPrincipal {
 
 	@FXML
 	private MenuBar menu;
 
-	Frameworks frame;
+	Frameworks frame = new Frameworks();
+
+	@FXML
+	private Menu btnMinimize;
+	
+	private Stage mainStage;
+	
 
 	public ControladorPrincipal(){
 	}
@@ -32,16 +31,25 @@ public class ControladorPrincipal {
 	private void Cerrar(){
 		Platform.exit();
 	}
+
+	@FXML
+	private void btnMinimize(){
+		System.out.println("minimizo");
+        mainStage.setIconified(true);
+	}
+
+
 	@FXML
 	private void VentanaUsuario(){
 		//mainApp.showVentanaUsuario();
 	}
 
 	public void registerStage(Stage stage) {
+		mainStage=stage;
 		Frameworks.makeDraggable(stage,menu);
 	}
 
-	
+
 
 }
 

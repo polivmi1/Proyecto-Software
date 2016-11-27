@@ -1,5 +1,6 @@
 package com.SecurVision.userInterface;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,7 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -15,42 +22,29 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import com.SecurVision.logic.Checkeo;
 
 public class ControladorVentanaLogin {
 
 	@FXML
-	private TextField UserIn;
+	private TextField userText;
+
 	@FXML
-	private TextField PassIn;
+	private PasswordField passText;
+
+	private static final String APPLICATION_ICON = "img/icon.png";
+
 
 	private String user = "admin";
 	private String pass = "1234";
 
-	private Frameworks frame;
-
 	private BorderPane rootLayout;
 	private Stage mainStage;
-
+	private Stage Login;
 	private static final String mainScene="view/MainLayout.fxml";
 	private static final String mainWindow="view/VentanaPrincipal.fxml";
-	
-	double x, y;
-
-	private void addDragListeners(final Node n, Stage primaryStage){
-
-	    n.setOnMousePressed((MouseEvent mouseEvent) -> {
-	        this.x = n.getScene().getWindow().getX() - mouseEvent.getScreenX();
-	        this.y = n.getScene().getWindow().getY() - mouseEvent.getScreenY();
-	    });
-
-	    n.setOnMouseDragged((MouseEvent mouseEvent) -> {
-	        primaryStage.setX(mouseEvent.getScreenX() + this.x);
-	        primaryStage.setY(mouseEvent.getScreenY() + this.y);
-	    });
-	}
-
 
 	public ControladorVentanaLogin(){
 	}
@@ -62,15 +56,40 @@ public class ControladorVentanaLogin {
 	}
 	@FXML
 	private void Aceptar(ActionEvent event) {
-		//if(user==UserIn.getText() && pass==PassIn.getText())
-		showMainStage(event);
-		showMainView();
+		if(userText.getText().equals(user) && passText.getText().equals(pass)){
+			showMainStage(event);
+			showMainView();
+		}else{
+			Alert();
+		}
+	}
+
+	@FXML
+	public void buttonPressed(KeyEvent e)
+	{
+
+		if(e.getCode().toString().equals("ENTER")){
+			System.out.println("intro");
+			Aceptar(null);
+
+		}else if(e.getCode().toString().equals("ESCAPE")){
+			System.out.println("escape");
+			Salir();
+		}
+	}
+	@FXML
+	void Salir() {
+		Confirmation();
+	}
+
+	void registerStage(Stage stage){
+		Login=stage;
 	}
 
 
 	private void showMainStage(ActionEvent event){
 		try {
-			Stage Login = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			//
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ControladorVentanaLogin.class.getResource(mainScene));
@@ -79,6 +98,8 @@ public class ControladorVentanaLogin {
 			Scene scene = new Scene(rootLayout);
 
 			mainStage = new Stage(StageStyle.UNDECORATED);
+			mainStage.getIcons().add(new Image(APPLICATION_ICON));
+
 			mainStage.setScene(scene);
 			Login.hide();
 			ControladorPrincipal controller = loader.getController();
@@ -89,10 +110,10 @@ public class ControladorVentanaLogin {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	public void showMainView() {
 		try {
 
@@ -100,9 +121,42 @@ public class ControladorVentanaLogin {
 			AnchorPane main = (AnchorPane) loader.load();
 
 			rootLayout.setCenter(main);
-						
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void Confirmation(){
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+
+		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
+		dialog.getIcons().add(new Image(APPLICATION_ICON));
+
+		alert.setHeaderText(null);
+		alert.setTitle("Saliendo de SecurVision");
+		alert.setContentText("\n¿Está seguro que desea Salir?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			Platform.exit();
+		}else{
+			alert.close();
+		}
+
+	}
+	private void Alert(){
+		Alert alert = new Alert(AlertType.WARNING);
+		
+		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
+		dialog.getIcons().add(new Image(APPLICATION_ICON));
+		
+		alert.setTitle("Usuario no Válido");
+		alert.setHeaderText(null);
+		alert.setContentText("Usuario/Contraseña Incorrecta");
+		userText.clear();
+		passText.clear();
+
+		alert.showAndWait();
 	}
 }

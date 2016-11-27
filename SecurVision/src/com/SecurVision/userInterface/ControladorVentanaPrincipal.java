@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Duration;
@@ -20,25 +21,19 @@ import com.SecurVision.logic.Checkeo;
 public class ControladorVentanaPrincipal {
 
 	@FXML
-	private Label fechalabel;
-	@FXML
-	private Label horalabel;
+	private Label fechalabel, horalabel;
 
 	@FXML
 	private TableView<Checkeo> CheckeoTable;
 	@FXML
-	private TableColumn<Checkeo, Integer> IdCheckeoColumn;
+	private TableColumn<Checkeo, Integer> IdCheckeoColumn, ZonaIdColumn;
 	@FXML
 	private TableColumn<Checkeo, String> PersonaDniColumn;
 	@FXML
-	private TableColumn<Checkeo, Integer> ZonaIdColumn;
-	@FXML
 	private TableColumn<Checkeo, Date> HoraColumn;
 
-
-	private MainApp mainApp;
-
-	private Date date = new Date();
+	@FXML
+	private SplitPane splitV, splitH;
 
 	public ControladorVentanaPrincipal(){
 	}
@@ -46,6 +41,7 @@ public class ControladorVentanaPrincipal {
 
 	@FXML
 	private void initialize(){
+		
 
 		horaFecha();
 
@@ -53,13 +49,6 @@ public class ControladorVentanaPrincipal {
 		PersonaDniColumn.setCellValueFactory(cellData -> cellData.getValue().PersonaDniProperty());
 		ZonaIdColumn.setCellValueFactory(cellData -> cellData.getValue().ZonaIdProperty().asObject());
 		HoraColumn.setCellValueFactory(cellData -> cellData.getValue().HoraProperty());
-
-	}
-
-	public void setMainApp(MainApp mainApp) {
-		this.mainApp = mainApp;
-
-		//CheckeoTable.setItems();
 
 	}
 
@@ -88,6 +77,7 @@ public class ControladorVentanaPrincipal {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 	}
+	
 
 }
 
