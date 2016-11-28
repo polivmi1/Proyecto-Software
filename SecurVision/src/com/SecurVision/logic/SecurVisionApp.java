@@ -1,9 +1,10 @@
 package com.SecurVision.logic;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
+import com.SecurVision.exceptions.DAOExcepcion;
 import com.SecurVision.persistencia.DAL;
+import com.SecurVision.persistenciaDTO.PersonaDTO;
 
 public class SecurVisionApp {
 	private DAL dal;
@@ -14,8 +15,11 @@ public class SecurVisionApp {
 	}
 
 	//Crear Persona
-	public Persona crearPersona(String dni, String nombre, String apellidos, int idNivel, int idHorario){
+	public Persona crearPersona(String dni, String nombre, String apellidos, int idNivel, int idHorario) throws DAOExcepcion{
+		dal.crearPersona(new PersonaDTO(dni,nombre, apellidos, idNivel, idHorario));
+
 		Persona p = new Persona(dni, nombre, apellidos);
+		listaPersonas.put(dni,p);
 
 		System.out.println("\nLista de clientes: " + listaPersonas.size() +" clientes");
 		return p;
