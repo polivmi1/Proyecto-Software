@@ -1,6 +1,8 @@
 package com.SecurVision.logic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.SecurVision.exceptions.DAOExcepcion;
 import com.SecurVision.persistencia.DAL;
@@ -8,39 +10,26 @@ import com.SecurVision.persistenciaDTO.PersonaDTO;
 
 public class SecurVisionApp {
 	private DAL dal;
-	private HashMap<String, Persona> listaPersonas;
-
-	public HashMap<String, Persona> getListaPersonas() {
-		return listaPersonas;
-	}
+	private List<Persona> listaPersonas = new ArrayList<>();
 
 	//Crear Persona
 	public Persona crearPersona(String dni, String nombre, String apellidos, int idNivel, int idHorario) throws DAOExcepcion{
 		dal.crearPersona(new PersonaDTO(dni,nombre, apellidos, idNivel, idHorario));
-
 		Persona p = new Persona(dni, nombre, apellidos);
-		listaPersonas.put(dni,p);
-
-		System.out.println("\nLista de clientes: " + listaPersonas.size() +" clientes");
 		return p;
 	}
 
-	//Method HashMap listaPersonas
-	public void anyadirSucursal(Persona persona){
-		listaPersonas.put(persona.getDni(), persona);
+	//Borrar Persona
+	public void borrarPersona(String dni) throws DAOExcepcion{
+		dal.borrarPersona(dni);
 	}
 
-	public Persona eliminarSucursal(int id){
-		return listaPersonas.remove(id);
+	//Listar Personas
+	public List<Persona> listarPersonas() throws DAOExcepcion{
+		List<PersonaDTO> list_users = dal.listarPersonas();
+		for (PersonaDTO personaDTO : list_users) {
+			listaPersonas.add(new Persona(personaDTO.getDni(), personaDTO.getNombre(), personaDTO.getApellidos()));
+		}
+		return listaPersonas;
 	}
-
-	public Persona buscarSucursal(int id){
-		return listaPersonas.get(id);
-	}
-
-	//Getters HashMap
-	public void setListaPersonas(HashMap<String, Persona> listaPersonas) {
-		this.listaPersonas = listaPersonas;
-	}
-
 }

@@ -12,13 +12,19 @@ public class PersonaDTO {
 	private int idNivel;
 	private int idHorario;
 
-		//Constructor
+		//Constructor for Create User
 	public PersonaDTO (String dni, String nombre, String apellidos, int idN, int idH){
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.idNivel = idN;
 		this.idHorario = idH;
+	}
+		//Constructor for Create List<User>
+	public PersonaDTO (String dni, String nombre, String apellidos){
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
 	}
 
 		//Getters and Setter

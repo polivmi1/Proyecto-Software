@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface IPersonaDAO {
 	public void crearPersona(PersonaDTO p)throws DAOExcepcion;
-	public List<PersonaDTO> getListaPersonas() throws DAOExcepcion;
+	public void borrarPersona(String dni)throws DAOExcepcion;
+	public List<PersonaDTO> listarPersonas() throws DAOExcepcion;
+
 }

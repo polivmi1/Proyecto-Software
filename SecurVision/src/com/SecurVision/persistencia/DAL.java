@@ -46,9 +46,6 @@ public class DAL {
 			 return personaDAO.listarPersonas();
 		 }
 		 */
-		 public List<Zona> listarZonas() throws DAOExcepcion{
-			 return zonaDAO.listarZonas();
-		 }
 
 
 		 /****	Metodos para encontrar objetos por su ID	****/
@@ -61,25 +58,24 @@ public class DAL {
 		 public Persona encontrarPersonaPorCod(String cod) throws DAOExcepcion{
 			 return personaDAO.encontrarPersonaPorCod(cod);
 		 }
-		 */
+
 
 		 public Zona encontrarZonaPorCod(int cod) throws DAOExcepcion{
 			 return zonaDAO.encontrarZonaPorCod(cod);
-		 }
-
-		 /****	Metodos de creacion	****/
-
-		 /*
-		 public void crearCheckeo(Checkeo chk) throws DAOExcepcion{
-			 checkeoDAO.crearCheckeo(chk);
 		 }*/
+
+		 /****	Metodos de PersonaDAO	****/
 
 		 public void crearPersona(PersonaDTO p) throws DAOExcepcion{
 			 personaDAO.crearPersona(p);
 		 }
 
-		 public void crearZona(Zona z) throws DAOExcepcion{
-			 zonaDAO.crearZona(z);
+		 public void borrarPersona(String dni) throws DAOExcepcion{
+			 personaDAO.borrarPersona(dni);
+		 }
+
+		 public List<PersonaDTO> listarPersonas() throws DAOExcepcion{
+			 return personaDAO.listarPersonas();
 		 }
 
 }
