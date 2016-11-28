@@ -75,7 +75,7 @@ public class DAL {
 		 }*/
 
 		 public void crearPersona(PersonaDTO p) throws DAOExcepcion{
-			// personaDAO.crearPersona(p);
+			 personaDAO.crearPersona(p);
 		 }
 
 		 public void crearZona(Zona z) throws DAOExcepcion{

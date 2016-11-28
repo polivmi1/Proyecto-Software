@@ -7,6 +7,6 @@ import com.SecurVision.exceptions.*;
 import java.util.List;
 
 public interface IPersonaDAO {
-	//public void crearPersona(PersonaDTO p)throws DAOExcepcion;
+	public void crearPersona(PersonaDTO p)throws DAOExcepcion;
 	public List<PersonaDTO> getListaPersonas() throws DAOExcepcion;
 }

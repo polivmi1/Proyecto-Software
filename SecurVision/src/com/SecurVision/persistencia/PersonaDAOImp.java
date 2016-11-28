@@ -63,9 +63,9 @@ public class PersonaDAOImp implements IPersonaDAO {
         return null;
 	}
 
-	//@Override
-	//public void crearPersona(PersonaDTO persona){
-	public static void main(String[]args){
+	@Override
+	public void crearPersona(PersonaDTO persona){
+	//public static void main(String[]args){
 		try{
 			// create HTTP Client
 			HttpClient httpClient = HttpClientBuilder.create().build();
