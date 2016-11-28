@@ -27,8 +27,8 @@ public class PersonaDAOImp implements IPersonaDAO {
 	 * LISTAR PERSONAS
 	 * */
 	@Override
-	public List<PersonaDTO> listarPersonas(){return null;}
-	public static void main(String[]args){
+	public List<PersonaDTO> listarPersonas(){
+	//public static void main(String[]args){
 		List<PersonaDTO> list_users = new ArrayList<>();
 		try{
 			// create HTTP Client
@@ -69,7 +69,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 			e.printStackTrace();
 		}
 
-      //return list_users;
+      return list_users;
 	}
 
 	/*
