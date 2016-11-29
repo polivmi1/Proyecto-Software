@@ -19,6 +19,8 @@ public class Persona {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.imagenes = new ArrayList<Imagen>();
+		//this.horario = horario;
+		//this.nivel = nivel;
 	}
 
 		//Getters and Setters

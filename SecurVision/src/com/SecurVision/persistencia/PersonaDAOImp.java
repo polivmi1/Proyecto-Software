@@ -85,12 +85,12 @@ public class PersonaDAOImp implements IPersonaDAO {
 			// Create new getRequest with below mentioned URL
 			String url_new = Constants.PERSONA_URL + "/new";
 			HttpPost postRequest = new HttpPost(url_new);
-			StringEntity json_req = new StringEntity("{\"dni\":\"" + "0008765D" + "\","
-													+ "\"nombre\":\"" + "Juan" + "\","
-													+ "\"apellidos\":\"" + "Perez" + "\","
-													+ " \"nivel_id\":\"" + "1" + "\","
-													+ "\"horario_id\":\"" + "1" +"\","
-													+ "\"isUsuario\":\"" + "1" + "\"}",
+			StringEntity json_req = new StringEntity("{\"dni\":\"" + persona.getDni() + "\","
+													+ "\"nombre\":\"" + persona.getNombre() + "\","
+													+ "\"apellidos\":\"" + persona.getApellidos() + "\","
+													+ " \"nivel_id\":\"" + persona.getIdNivel() + "\","
+													+ "\"horario_id\":\"" + persona.getIdHorario() +"\","
+													+ "\"isUsuario\":\"" + "0" + "\"}",
 													ContentType.create("application/json"));
 			postRequest.setEntity(json_req);
 
@@ -128,7 +128,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
 			// Create new getRequest with below mentioned URL
-			String url_new = Constants.PERSONA_URL + "/666/delete";
+			String url_new = Constants.PERSONA_URL + "/" + dni + "/delete";
 			HttpDelete deleteRequest = new HttpDelete(url_new);
 
 			// Execute your request and catch response

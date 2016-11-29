@@ -1,6 +1,5 @@
 package com.SecurVision.persistencia;
 
-import com.SecurVision.logic.*;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
 import com.SecurVision.exceptions.*;
 
