@@ -90,7 +90,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 													+ "\"apellidos\":\"" + persona.getApellidos() + "\","
 													+ " \"nivel_id\":\"" + persona.getIdNivel() + "\","
 													+ "\"horario_id\":\"" + persona.getIdHorario() +"\","
-													+ "\"isUsuario\":\"" + "1" + "\"}",
+													+ "\"isUsuario\":\"" + "0" + "\"}",
 													ContentType.create("application/json"));
 			postRequest.setEntity(json_req);
 
@@ -128,7 +128,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
 			// Create new getRequest with below mentioned URL
-			String url_new = Constants.PERSONA_URL + "/666/delete";
+			String url_new = Constants.PERSONA_URL + "/"+dni+"/delete";
 			HttpDelete deleteRequest = new HttpDelete(url_new);
 
 			// Execute your request and catch response

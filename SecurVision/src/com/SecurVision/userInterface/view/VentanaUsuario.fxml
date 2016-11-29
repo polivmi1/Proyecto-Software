@@ -41,6 +41,7 @@
                </children>
             </HBox>
             <Button layoutX="430.0" layoutY="220.0" mnemonicParsing="false" onAction="#anyadir" text="Añadir usuario" />
+            <Button layoutX="223.0" layoutY="220.0" mnemonicParsing="false" onAction="#borrar" text="Borrar Usuario" />
          </children>
       </Pane>
    </children>

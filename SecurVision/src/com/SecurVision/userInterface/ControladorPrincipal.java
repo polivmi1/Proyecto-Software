@@ -30,6 +30,7 @@ public class ControladorPrincipal {
 	private Stage mainStage;
 	
 	private static final String user="view/VentanaUsuario.fxml";
+	private static final String pass="view/VentanaCambiarContraseña.fxml";
 
 
 	public ControladorPrincipal(){
@@ -47,8 +48,10 @@ public class ControladorPrincipal {
 	
 	@FXML
 	private void contraseña(ActionEvent event){
-		System.out.println("cambiar contraseña");
-		frame.showNewStage(event,user);
+		frame.Alert(AlertType.INFORMATION, "Cambiar Contraseña", "Este Apartado será desarrollado "
+    			+ "en el tercer Sprint");
+//		System.out.println("cambiar contraseña");
+//		frame.showNewStage(event,pass);
 	}
 
 	@FXML

@@ -3,6 +3,7 @@ package com.SecurVision.userInterface;
 import java.io.File;
 
 import com.SecurVision.exceptions.DAOExcepcion;
+import com.SecurVision.exceptions.LogicException;
 import com.SecurVision.logic.HorarioEmpleo;
 import com.SecurVision.logic.Nivel;
 import com.SecurVision.logic.Persona;
@@ -11,6 +12,7 @@ import com.SecurVision.persistencia.DAL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -46,15 +48,13 @@ public class ControladorAnyadirUsuario{
 	private String photo;
 	private String directory;
 
-	SecurVisionApp instance;
+	SecurVisionApp svApp;
 	Persona newPerson;
 	DAL dal;
-
+	Frameworks frame=new Frameworks();
 
 	@FXML
 	void anyadir(ActionEvent event) throws DAOExcepcion {
-		//System.out.println(txtDni.getText()+"  "+txtName.getText()+"   "+txtApellidos.getText());
-
 
 		newPerson = new Persona(txtDni.getText(), txtName.getText(), txtApellidos.getText());
 		Nivel nivel = null;
@@ -62,29 +62,21 @@ public class ControladorAnyadirUsuario{
 		HorarioEmpleo horario = null;
 		newPerson.setHorario(horario);
 		
-
-		//			if(newPerson !=null){
-		//				instance.crearPersona(newPerson,newPerson.setNivel(nivel),newPerson.setHorario(horario));
-		//			}
-		
-		//instance.crearPersona(txtDni.getText(), txtName.getText(), txtApellidos.getText(), 1, 1);
 		if(newPerson !=null){
-			instance.crearPersona(newPerson.getDni(),
-								  newPerson.getNombre(),
-								  newPerson.getApellidos(),
-								  Integer.parseInt("1"),
-								  Integer.parseInt("1")
-								  );
+			try {
+				svApp.getInstance().crearPersona(newPerson.getDni(),
+									  newPerson.getNombre(),
+									  newPerson.getApellidos(),
+									  Integer.parseInt("1"),
+									  Integer.parseInt("1")
+									  );
+				//frame.Alert(AlertType.CONFIRMATION,"Nuevo Usuario", "El usuario ha sido creado correctamente");
+			} catch (NumberFormatException | LogicException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			
-			System.out.println(newPerson.getDni() +"  "+
-					  newPerson.getNombre()+"     "+
-					  newPerson.getApellidos()+"     "+
-					  Integer.parseInt("1")+"     "+
-					  Integer.parseInt("1")
-					  );
 		}
-		
 	}
 
 	@FXML
