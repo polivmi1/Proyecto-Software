@@ -23,12 +23,13 @@ import com.SecurVision.persistenciaDTO.ImagenDTO;
 public class ImagenDAOImp implements IImagenDAO{
 
 	@Override
-	public void subirImagen(ImagenDTO image) throws DAOExcepcion {}
-	public static void main(String[]args){
+	public void subirImagen(ImagenDTO image) throws DAOExcepcion {
+	//public static void main(String[]args){
 		try{
 			//image.getUrl()
+			//"/Users/path/Desktop/patri.jpg"
 			// transform  file to base 64
-			FileInputStream i = new FileInputStream(new File("/Users/path/Desktop/patri.jpg"));
+			FileInputStream i = new FileInputStream(new File(image.getUrl()));
 	        byte[] message = IOUtils.toByteArray(i);
 	        String encoded = DatatypeConverter.printBase64Binary(message);
 
@@ -38,7 +39,7 @@ public class ImagenDAOImp implements IImagenDAO{
 			// Create new getRequest with below mentioned URL
 			String url_new = Constants.IMAGEN_URL;
 			HttpPost postRequest = new HttpPost(url_new);
-			StringEntity json_req = new StringEntity("{\"dni\":\"" + "23822698B" + "\","
+			StringEntity json_req = new StringEntity("{\"dni\":\"" + image.getDni_persona() + "\","
 													+ "\"imagen\":\"" + encoded + "\"}",
 													ContentType.create("application/json"));
 			postRequest.setEntity(json_req);
@@ -64,5 +65,4 @@ public class ImagenDAOImp implements IImagenDAO{
 			e.printStackTrace();
 		}
 	}
-
 }
