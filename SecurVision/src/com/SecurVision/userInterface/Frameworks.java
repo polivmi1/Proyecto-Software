@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Frameworks {
 
@@ -98,7 +99,8 @@ public class Frameworks {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			AnchorPane window = (AnchorPane) loader.load();
 
-			Stage newStage = new Stage();
+			Stage newStage = new Stage(StageStyle.UTILITY);
+			newStage.getIcons().add(new Image(APPLICATION_ICON));
 			Scene scene = new Scene (window);
 			newStage.setScene(scene);
 			newStage.initModality(Modality.APPLICATION_MODAL);

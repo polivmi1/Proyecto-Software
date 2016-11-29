@@ -88,12 +88,12 @@
                   <ToggleButton fx:id="btnGuardia" mnemonicParsing="false" text="Es Guardia" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="274.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="274.0" visible="false" GridPane.rowIndex="3">
                <children>
                   <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <Button mnemonicParsing="false" onAction="#anyadir" text="Añadir" />
                </children>

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import java.util.List;
 
 import com.SecurVision.exceptions.DAOExcepcion;
+import com.SecurVision.exceptions.LogicException;
 import com.SecurVision.logic.Checkeo;
 import com.SecurVision.logic.Persona;
 import com.SecurVision.logic.SecurVisionApp;
@@ -20,7 +21,7 @@ public class ControladorVentanaUsuario {
 	Frameworks frame = new Frameworks();
 	private static final String add="view/AnyadirUsuario.fxml";
 	
-	SecurVisionApp instance = new SecurVisionApp();
+	SecurVisionApp svApp;
 	private List<Persona> personas;
     private ObservableList<Persona> personsObservable;
     
@@ -52,6 +53,15 @@ public class ControladorVentanaUsuario {
     @FXML
     private void initialize(){
     	//rellenarTabla();
+    	if(svApp==null){
+    		try {
+				svApp = new SecurVisionApp();
+			} catch (DAOExcepcion | LogicException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
     		
     }
     
@@ -64,7 +74,7 @@ public class ControladorVentanaUsuario {
     
     private void rellenarTabla(){
     	try {
-			personas =instance.listarPersonas();
+			personas =svApp.listarPersonas();
 			//personsObservable = FXCollections.observableArrayList(personas);
 			System.out.println(personas);
 		} catch (DAOExcepcion e) {
