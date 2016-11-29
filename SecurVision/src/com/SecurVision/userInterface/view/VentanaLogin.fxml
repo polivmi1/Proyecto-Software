@@ -42,9 +42,9 @@
                </GridPane.margin>
             </Text>
             <Label id="label" text="Usuario" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label id="label" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="userText" focusTraversable="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <PasswordField fx:id="passText" focusTraversable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label id="label" text="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="userText" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <PasswordField fx:id="passText" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
                <children>
                   <Button id="lion" mnemonicParsing="false" onAction="#Aceptar" text="Iniciar Sesión" textOverrun="CLIP" />

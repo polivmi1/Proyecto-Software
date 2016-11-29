@@ -20,13 +20,13 @@
           <Menu mnemonicParsing="false" text="Configurar">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#VentanaUsuario" text="Usuario" />
-                  <MenuItem mnemonicParsing="false" text="Zona" />
-                  <MenuItem mnemonicParsing="false" text="Nivel" />
+                  <MenuItem mnemonicParsing="false" onAction="#Zona" text="Zona" />
+                  <MenuItem mnemonicParsing="false" onAction="#Nivel" text="Nivel" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">
             <items>
-              <MenuItem mnemonicParsing="false" text="Sobre SecurVision" />
+              <MenuItem mnemonicParsing="false" onAction="#Ayuda" text="Sobre SecurVision" />
             </items>
           </Menu>
         </menus>

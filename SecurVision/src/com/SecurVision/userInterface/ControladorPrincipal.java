@@ -1,10 +1,21 @@
 package com.SecurVision.userInterface;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ControladorPrincipal {
 
@@ -15,9 +26,11 @@ public class ControladorPrincipal {
 
 	@FXML
 	private Menu btnMinimize;
-	
+
 	private Stage mainStage;
 	
+	private static final String user="view/VentanaUsuario.fxml";
+
 
 	public ControladorPrincipal(){
 	}
@@ -35,14 +48,33 @@ public class ControladorPrincipal {
 	@FXML
 	private void btnMinimize(){
 		System.out.println("minimizo");
-        mainStage.setIconified(true);
+		mainStage.setIconified(true);
 	}
 
 
 	@FXML
-	private void VentanaUsuario(){
-		//mainApp.showVentanaUsuario();
+	private void VentanaUsuario(ActionEvent event){
+		System.out.println("ventana Usuario");
+		frame.showNewStage(event,user);
 	}
+	
+    @FXML
+    void Zona(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ventana Zona", "Este Apartado será desarrollado "
+    			+ "en el tercer Sprint");
+    }
+    
+    @FXML
+    void Nivel(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ventana Nivel", "Este Apartado será desarrollado "
+    			+ "en el tercer Sprint");
+    }
+    
+    @FXML
+    void Ayuda(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ayuda", "Este Apartado será desarrollado "
+    			+ "en el tercer Sprint");
+    }
 
 	public void registerStage(Stage stage) {
 		mainStage=stage;
@@ -50,34 +82,4 @@ public class ControladorPrincipal {
 	}
 
 
-
 }
-
-/*private static final String LOGGIN_ADMIN= "loggin-admin.fxml";
-		 private static final String VER_PERFIL_USUARIO = "ver-perfil-usuario.fxml";
-		 //TODO aï¿½adir constantes de tipo String para la vistas correspondientes a los
-		//casos de uso Crear Reserva y Listar Reservas de una Sucursal
-		 private Stage primaryStage;
-		 @FXML
-		 void logginGuardia(ActionEvent event) throws LogicException {
-		 initCasoDeUso(LOGGIN_ADMIN, ControladorLogginAdmin.class).show();
-		 }
-		 @FXML
-		 void listarClientes(ActionEvent event) throws LogicException {
-		 initCasoDeUso(VER_PERFIL_USUARIO, ControladorVerPerfilUsuario.class).show();
-		 }
-
-		 @FXML
-		 void salir(ActionEvent event) {
-		 Platform.exit();
-		 }
-		 public void setPrimaryStage(Stage primaryStage) {
-		 this.primaryStage = primaryStage;
-		 }
-		 private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista,
-		Class<T> controlClass) {
-		 return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass,
-		primaryStage, ControladorPrincipal.this);
-		 }
-		}
- */

@@ -6,10 +6,15 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.text.DateFormat;
@@ -32,8 +37,9 @@ public class ControladorVentanaPrincipal {
 	@FXML
 	private TableColumn<Checkeo, Date> HoraColumn;
 
-	@FXML
-	private SplitPane splitV, splitH;
+    @FXML
+    private TextArea textGuards;
+
 
 	public ControladorVentanaPrincipal(){
 	}
@@ -41,7 +47,7 @@ public class ControladorVentanaPrincipal {
 
 	@FXML
 	private void initialize(){
-		
+
 
 		horaFecha();
 
@@ -78,6 +84,10 @@ public class ControladorVentanaPrincipal {
 		timeline.play();
 	}
 	
+	@FXML
+	void updateTable() {
+		System.out.println("actualizamos tabla");
+	}
 
 }
 

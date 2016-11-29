@@ -10,13 +10,6 @@
    	-fx-background-size: cover;
 }
 
-.split-pane *.split-pane-divider {
-    -fx-padding: 0 0 0 0;
-}
-
-.scroll-pane > .viewport {
-   -fx-background-color: transparent;
-}
 
 .button{
     -fx-border-color: transparent;
@@ -72,6 +65,14 @@
      -fx-font-size: 25 pt;
      -fx-label-line-length: 12;
 }
+
+#update{
+    -fx-background-image: url(../../../../img/update.png);
+    -fx-background-repeat: no-repeat;   
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+
 
 #lion {
     -fx-background-color: 

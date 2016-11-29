@@ -1,30 +1,21 @@
 package com.SecurVision.userInterface;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Optional;
-
-import com.SecurVision.logic.Checkeo;
 
 public class ControladorVentanaLogin {
 
@@ -44,7 +35,9 @@ public class ControladorVentanaLogin {
 	private Stage mainStage;
 	private Stage Login;
 	private static final String mainScene="view/MainLayout.fxml";
-	private static final String mainWindow="view/VentanaPrincipal.fxml";
+	private static final String mainWindow="view/VentanaPrincipalTest.fxml";
+	
+	Frameworks frame= new Frameworks();
 
 	public ControladorVentanaLogin(){
 	}
@@ -52,6 +45,8 @@ public class ControladorVentanaLogin {
 
 	@FXML
 	private void initialize(){
+		
+		
 
 	}
 	@FXML
@@ -60,7 +55,10 @@ public class ControladorVentanaLogin {
 			showMainStage(event);
 			showMainView();
 		}else{
-			Alert();
+	    	frame.Alert(AlertType.WARNING, "Usuario Incorrecto", "Ha introducido "
+	    			+ "usuario/contraseña incorrecto/s");
+			userText.clear();
+			passText.clear();
 		}
 	}
 
@@ -75,11 +73,19 @@ public class ControladorVentanaLogin {
 		}else if(e.getCode().toString().equals("ESCAPE")){
 			System.out.println("escape");
 			Salir();
+		}else if (e.getCode().equals(KeyCode.TAB)) {
+			System.out.println("TAB");
+			userText.setFocusTraversable(true);
+			if(userText.isFocused())
+				passText.setFocusTraversable(true);
+			else if(passText.isFocused())
+				userText.setFocusTraversable(true);
+			
 		}
 	}
 	@FXML
 	void Salir() {
-		Confirmation();
+		frame.Alert(AlertType.CONFIRMATION, "Saliendo de SecurVision", "¿Está seguro que desea Salir?");
 	}
 
 	void registerStage(Stage stage){
@@ -89,7 +95,6 @@ public class ControladorVentanaLogin {
 
 	private void showMainStage(ActionEvent event){
 		try {
-			//
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ControladorVentanaLogin.class.getResource(mainScene));
@@ -111,9 +116,6 @@ public class ControladorVentanaLogin {
 		}
 	}
 
-
-
-
 	public void showMainView() {
 		try {
 
@@ -125,38 +127,5 @@ public class ControladorVentanaLogin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private void Confirmation(){
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-
-		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
-		dialog.getIcons().add(new Image(APPLICATION_ICON));
-
-		alert.setHeaderText(null);
-		alert.setTitle("Saliendo de SecurVision");
-		alert.setContentText("\n¿Está seguro que desea Salir?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
-			Platform.exit();
-		}else{
-			alert.close();
-		}
-
-	}
-	private void Alert(){
-		Alert alert = new Alert(AlertType.WARNING);
-		
-		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
-		dialog.getIcons().add(new Image(APPLICATION_ICON));
-		
-		alert.setTitle("Usuario no Válido");
-		alert.setHeaderText(null);
-		alert.setContentText("Usuario/Contraseña Incorrecta");
-		userText.clear();
-		passText.clear();
-
-		alert.showAndWait();
 	}
 }
