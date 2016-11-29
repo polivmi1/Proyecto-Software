@@ -23,9 +23,9 @@ import com.SecurVision.persistenciaDTO.PersonaDTO;
 
 public class PersonaDAOImp implements IPersonaDAO {
 
-	/*
-	 * LISTAR PERSONAS
-	 * */
+	/**
+	 ** LISTAR PERSONAS **
+	 **/
 	@Override
 	public List<PersonaDTO> listarPersonas(){
 	//public static void main(String[]args){
@@ -72,9 +72,9 @@ public class PersonaDAOImp implements IPersonaDAO {
       return list_users;
 	}
 
-	/*
-	 * CREAR PERSONA
-	 * */
+	/**
+	 ** CREAR PERSONA **
+	 **/
 	@Override
 	public void crearPersona(PersonaDTO persona){
 	//public static void main(String[]args){
@@ -117,9 +117,9 @@ public class PersonaDAOImp implements IPersonaDAO {
 
 	}
 
-	/*
-	 * BORRAR PERSONA
-	 * */
+	/**
+	 ** BORRAR PERSONA **
+	 **/
 	@Override
 	public void borrarPersona(String dni) throws DAOExcepcion {
 	//public static void main(String[]args){
