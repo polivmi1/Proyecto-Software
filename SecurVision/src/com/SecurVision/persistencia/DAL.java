@@ -2,6 +2,7 @@ package com.SecurVision.persistencia;
 
 import java.util.*;
 import com.SecurVision.logic.*;
+import com.SecurVision.persistenciaDTO.ImagenDTO;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
 import com.SecurVision.exceptions.*;
 
@@ -12,7 +13,7 @@ public class DAL {
 		 private IUsuarioDAO usuarioDAO;
 		 private IZonaDAO zonaDAO;
 		 private INivelDAO nivelDAO;
-
+		 private IImagenDAO	imagenDAO;
 		 //private IFranjaHoraria franjaHorariaDAO;
 
 		 // constructor privado
@@ -23,6 +24,7 @@ public class DAL {
 			 usuarioDAO = new UsuarioDAOImp();
 			 zonaDAO = new ZonaDAOImp();
 			 nivelDAO = new NivelDAOImp();
+			 imagenDAO = new ImagenDAOImp();
 
 			 //franjaHorariaDAO = new FranjaHorariaDAOImp();
 
@@ -76,6 +78,12 @@ public class DAL {
 
 		 public List<PersonaDTO> listarPersonas() throws DAOExcepcion{
 			 return personaDAO.listarPersonas();
+		 }
+
+		 /**** Metodos de ImagenDAO ****/
+
+		 public void subirImagen(ImagenDTO img) throws DAOExcepcion {
+			 imagenDAO.subirImagen(img);
 		 }
 
 }

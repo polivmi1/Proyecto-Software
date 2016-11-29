@@ -50,6 +50,8 @@ public class PersonaDAOImp implements IPersonaDAO {
 			ResponseHandler<String> handler = new BasicResponseHandler();
 			String body = handler.handleResponse(response);
 
+			System.out.println(body);
+
 			JSONArray jsonArray = new JSONArray(body);
 
 			for (int i = 0; i < jsonArray.length(); i++) {

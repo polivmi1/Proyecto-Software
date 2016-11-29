@@ -1,18 +1,25 @@
 package com.SecurVision.persistenciaDTO;
 
-import java.io.File;
+public class ImagenDTO{
 
-public class ImagenDTO extends File{
-
+	private String url;
 	private String dni_persona;
 
 		//Constructor
-	public ImagenDTO(File parent, String child, String dni) {
-		super(parent, child);
+	public ImagenDTO(String url, String dni) {
+		this.url = url;
 		this.dni_persona = dni;
 	}
 
-		//Getters and Setters
+	//Getters and Setters
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public String getDni_persona() {
 		return dni_persona;
 	}
