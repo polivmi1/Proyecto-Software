@@ -10,7 +10,7 @@ public class Usuario extends Persona{
 
 	//Constructor
 	public Usuario(String id, String nombre, String apellidos, ArrayList<Imagen>imagenes, String user, String email, String pass){
-		super(id, nombre, apellidos, imagenes);
+		super(id, nombre, apellidos);
 		this.username = user;
 		this.email = email;
 		this.password = pass;

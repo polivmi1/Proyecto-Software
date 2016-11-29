@@ -44,6 +44,12 @@ public class ControladorPrincipal {
 	private void Cerrar(){
 		Platform.exit();
 	}
+	
+	@FXML
+	private void contraseña(ActionEvent event){
+		System.out.println("cambiar contraseña");
+		frame.showNewStage(event,user);
+	}
 
 	@FXML
 	private void btnMinimize(){
