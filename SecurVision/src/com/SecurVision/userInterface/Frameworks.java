@@ -1,7 +1,30 @@
 package com.SecurVision.userInterface;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Optional;
+import java.util.Properties;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.SecurVision.exceptions.DAOExcepcion;
+import com.SecurVision.exceptions.LogicException;
+import com.SecurVision.logic.SecurVisionApp;
+import com.SecurVision.persistenciaDTO.Constants;
+import com.SecurVision.persistenciaDTO.PersonaDTO;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,6 +51,8 @@ public class Frameworks {
 	//Parametros para hacerla Arrastrable
 	private double desplazX=0;
 	private double desplazY=0;
+
+	private SecurVisionApp svApp;
 
 
 	public void setArrastrable(Parent page, Stage PopUpStage){
@@ -135,4 +160,114 @@ public class Frameworks {
 
 	}
 
+	void setSecurvision(){
+		try {
+			svApp=SecurVisionApp.getInstance();
+		} catch (DAOExcepcion | LogicException e) {
+			// TODO Auto-generated catch block
+			Alert(AlertType.ERROR, "Error Irresoluble", "No se ha podido cargar"
+					+ " la base de datos");
+			Platform.exit();
+		}
+	}
+
+	SecurVisionApp getSecurvision(){
+		return svApp;
+	}
+	//Para contraseña al server
+
+	public boolean checkLogin(String user, String pass){
+		boolean login = false;
+
+		try{
+			// create HTTP Client
+			HttpClient httpClient = HttpClientBuilder.create().build();
+
+			// Create new getRequest with below mentioned URL
+			HttpGet getRequest = new HttpGet(Constants.USUARIO_URL.
+					concat("/"+user+"/"+pass));
+
+			// Execute your request and catch response
+			HttpResponse response = httpClient.execute(getRequest);
+
+			int code = response.getStatusLine().getStatusCode();
+
+			// Check for HTTP response code: 200 = success
+			if (code != 200) {
+				throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
+			}
+
+			ResponseHandler<String> handler = new BasicResponseHandler();
+			String body = handler.handleResponse(response);
+
+			if(body.contains("true"))
+				login=true;
+
+			CloseableHttpResponse response1 = (CloseableHttpResponse) httpClient.execute(getRequest);
+			response1.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return login;
+
+	}
+
+
+
+	//Para las contraseña si fuese local
+
+	private static File targetFile;
+	private static Properties properties;
+	private static String newLine = System.lineSeparator();
+
+	static Boolean checkIfKeyValuePairExists(
+			String username, String password
+			)
+	{
+		for(String key: 
+			properties.stringPropertyNames())
+			if(key.equals(username) 
+					&& properties.getProperty(key)
+					.equals(password))
+				return true;
+
+		return false;
+	}
+
+	static void updateCredentials(
+			String username, String password)
+					throws IOException
+	{
+		FileWriter writer = 
+				new FileWriter(
+						targetFile.getAbsolutePath()
+						, false);//cambiandolo a true se convierte en un append
+		Writer output = 
+				new BufferedWriter(writer);
+		output.write(
+				newLine + username + ":" + password);
+		output.close();
+	}
+
+	static
+	{
+		targetFile = new File("./password");
+
+		properties = new Properties();
+
+		try
+		{
+			properties.load(
+					new FileInputStream(
+							targetFile.getAbsolutePath()));
+		}
+
+		catch(IOException ioe)
+		{
+			System.err.println(
+					"Unable to read file.");
+		}
+	}
 }
