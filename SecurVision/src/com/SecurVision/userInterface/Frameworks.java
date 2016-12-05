@@ -14,18 +14,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.SecurVision.exceptions.DAOExcepcion;
-import com.SecurVision.exceptions.LogicException;
-import com.SecurVision.logic.SecurVisionApp;
 import com.SecurVision.persistenciaDTO.Constants;
-import com.SecurVision.persistenciaDTO.PersonaDTO;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,8 +43,6 @@ public class Frameworks {
 	//Parametros para hacerla Arrastrable
 	private double desplazX=0;
 	private double desplazY=0;
-
-	private SecurVisionApp svApp;
 
 
 	public void setArrastrable(Parent page, Stage PopUpStage){
@@ -136,8 +126,27 @@ public class Frameworks {
 			e.printStackTrace();
 		}
 	}
+	
+	public void showNoModalStage(ActionEvent event,String fxml){
+		try {
 
-	protected void Alert(AlertType type, String title, String content){
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+			AnchorPane window = (AnchorPane) loader.load();
+
+			Stage newStage = new Stage(StageStyle.UTILITY);
+			newStage.getIcons().add(new Image(APPLICATION_ICON));
+			Scene scene = new Scene (window);
+			newStage.setScene(scene);
+			newStage.initModality(Modality.APPLICATION_MODAL);
+
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void Alert(AlertType type, String title, String content){
 		Alert alert = new Alert(type);
 
 		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
@@ -159,21 +168,6 @@ public class Frameworks {
 		}
 
 	}
-
-	void setSecurvision(){
-		try {
-			svApp=SecurVisionApp.getInstance();
-		} catch (DAOExcepcion | LogicException e) {
-			// TODO Auto-generated catch block
-			Alert(AlertType.ERROR, "Error Irresoluble", "No se ha podido cargar"
-					+ " la base de datos");
-			Platform.exit();
-		}
-	}
-
-	SecurVisionApp getSecurvision(){
-		return svApp;
-	}
 	//Para contraseña al server
 
 	public boolean checkLogin(String user, String pass){
@@ -194,7 +188,10 @@ public class Frameworks {
 
 			// Check for HTTP response code: 200 = success
 			if (code != 200) {
-				throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
+				Alert(AlertType.ERROR, "Servidor No operativo", "Operación no permitida "
+		    			+ "HTTP Error"+ code + response.getStatusLine());
+				Platform.exit();
+				//throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
 			}
 
 			ResponseHandler<String> handler = new BasicResponseHandler();

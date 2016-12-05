@@ -25,9 +25,7 @@ public class ControladorContrasenya {
 	private PasswordField passNewRep;
 
 
-	private static File targetFile;
-	private static Properties properties;
-	private static String newLine = System.lineSeparator();
+	Frameworks frame= new Frameworks();
 
 
 
@@ -37,85 +35,22 @@ public class ControladorContrasenya {
 
 	@FXML
 	private void initialize() throws IOException{
-		if(!targetFile.exists())
-			targetFile.createNewFile();
-
-
-//		Boolean doesTheKeyValuePairExist = 
-//				checkIfKeyValuePairExists(
-//						"root", "1234");
-//
-//		if(!doesTheKeyValuePairExist)
-//			addNewCredentials(
-//					"admin", passNew.getText());
-//		else{
-//			System.out.println("existe");
-//		}
-
 
 	}
 
 	@FXML
 	void aceptar(ActionEvent event) throws IOException {
 		Boolean doesTheKeyValuePairExist = 
-				checkIfKeyValuePairExists(
+				frame.checkIfKeyValuePairExists(
 						"admin",passOld.getText());
 		if(doesTheKeyValuePairExist)
-			addNewCredentials(
+			frame.updateCredentials(
 					"admin", passNew.getText());
 		else{
 			System.out.println("No existe");
 		}
 
-	}  
-
-	static
-	{
-		targetFile = new File("./password");
-
-		properties = new Properties();
-
-		try
-		{
-			properties.load(
-					new FileInputStream(
-							targetFile.getAbsolutePath()));
-		}
-
-		catch(IOException ioe)
-		{
-			System.err.println(
-					"Unable to read file.");
-		}
 	}
-
-	private static void addNewCredentials(
-			String username, String password)
-					throws IOException
-	{
-		FileWriter writer = 
-				new FileWriter(
-						targetFile.getAbsolutePath()
-						, true);
-		Writer output = 
-				new BufferedWriter(writer);
-		output.write(
-				newLine + username + ":" + password);
-		output.close();
-	}
-
-	private static Boolean checkIfKeyValuePairExists(
-			String username, String password
-			)
-	{
-		for(String key: 
-			properties.stringPropertyNames())
-			if(key.equals(username) 
-					&& properties.getProperty(key)
-					.equals(password))
-				return true;
-
-		return false;
-	}
-
 }
+
+

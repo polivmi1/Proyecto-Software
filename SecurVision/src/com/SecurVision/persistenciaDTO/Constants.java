@@ -8,5 +8,7 @@ public class Constants {
 	 *  y en un futuro se usará usuario
 	 */
 	public final static String USUARIO_URL = "http://162.220.55.166:8080/SecurVision/usuario";
-
+	
+	
+	public final static String IMAGEN_URL = "http://162.220.55.166:8080/SecurVision/autenticacion/imagen/new";
 }

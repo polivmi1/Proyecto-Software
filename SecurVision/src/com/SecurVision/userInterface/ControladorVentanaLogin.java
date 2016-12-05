@@ -17,6 +17,10 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import com.SecurVision.exceptions.DAOExcepcion;
+import com.SecurVision.exceptions.LogicException;
+import com.SecurVision.logic.SecurVisionApp;
+
 public class ControladorVentanaLogin {
 
 	@FXML
@@ -26,10 +30,6 @@ public class ControladorVentanaLogin {
 	private PasswordField passText;
 
 	private static final String APPLICATION_ICON = "img/icon.png";
-
-
-	private String user = "admin";
-	private String pass = "1234";
 
 	private BorderPane rootLayout;
 	private Stage mainStage;
@@ -46,12 +46,16 @@ public class ControladorVentanaLogin {
 	@FXML
 	private void initialize(){
 		
-		
 
 	}
 	@FXML
-	private void Aceptar(ActionEvent event) {
-		if(userText.getText().equals(user) && passText.getText().equals(pass)){
+	private void Aceptar(ActionEvent event) throws DAOExcepcion, LogicException {
+		Boolean existUser=frame.checkLogin(userText.getText(), 
+				passText.getText());
+		
+		if(existUser){
+			//Iniciamos ya la llamada a la base de datos
+			SecurVisionApp.getInstance();
 			showMainStage(event);
 			showMainView();
 		}else{
@@ -63,7 +67,7 @@ public class ControladorVentanaLogin {
 	}
 
 	@FXML
-	public void buttonPressed(KeyEvent e)
+	public void buttonPressed(KeyEvent e) throws DAOExcepcion, LogicException
 	{
 
 		if(e.getCode().toString().equals("ENTER")){

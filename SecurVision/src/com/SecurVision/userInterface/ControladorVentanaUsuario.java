@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -46,6 +48,9 @@ public class ControladorVentanaUsuario {
 	@FXML
 	private TableColumn <Persona, Integer> timeColumn;
 
+	Stage User;
+	private String dni;
+
 
 	public ControladorVentanaUsuario(){
 
@@ -73,38 +78,40 @@ public class ControladorVentanaUsuario {
 		//		levelColumn.setCellValueFactory(cellData ->new ReadOnlyStringWrapper("1"))));
 		//		timeColumn.setCellValueFactory(cellData ->new ReadOnlyStringWrapper("1"))));
 		userTable.setItems(personsObservable);
+		dni="";
+		userTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			if(!newValue.getDni().isEmpty()){
+				dni=newValue.getDni();
+				System.out.println("Slider Value Changed (newValue: " + newValue.getDni() + ")");
+			}
+		});
 	}
-
-
-
-
 
 	@FXML
 	void anyadir(ActionEvent event) {
-		frame.showNewStage(event, add);
+		User = (Stage) userTable.getScene().getWindow();
+		User.close();
+		frame.showNoModalStage(event, add);
 
 	}  
 
 	@FXML
 	void borrar(ActionEvent event) throws DAOExcepcion, LogicException {
-		String dni=userTable.getSelectionModel().getSelectedItem().getDni();
-		for (int aux =0; aux<personsObservable.size();aux++)
-			if(personsObservable.get(aux).getDni().equals(dni))
-				personsObservable.remove(personsObservable.get(aux));
-		svApp.getInstance().borrarPersona(dni);
+
+		if(!dni.isEmpty()){
+			for (int aux =0; aux<personsObservable.size();aux++)
+				if(personsObservable.get(aux).getDni().equals(dni))
+					personsObservable.remove(personsObservable.get(aux));
+			svApp.getInstance().borrarPersona(dni);
+			frame.Alert(AlertType.INFORMATION,"Borrar Usuario", "El usuario ha sido eliminado correctamente");	
+		}else{
+			frame.Alert(AlertType.ERROR,"Borrar Usuario", "Debes seleccionar un elemento de la tabla");	
+
+		}
+		dni="";
 
 
 	} 
 
-	private void rellenarTabla(){
-		try {
-			personas =svApp.listarPersonas();
-			//personsObservable = FXCollections.observableArrayList(personas);
-			System.out.println(personas);
-		} catch (DAOExcepcion e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 }

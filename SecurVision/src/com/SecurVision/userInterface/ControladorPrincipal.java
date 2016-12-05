@@ -48,10 +48,10 @@ public class ControladorPrincipal {
 	
 	@FXML
 	private void contraseña(ActionEvent event){
-		frame.Alert(AlertType.INFORMATION, "Cambiar Contraseña", "Este Apartado será desarrollado "
-    			+ "en el tercer Sprint");
-//		System.out.println("cambiar contraseña");
-//		frame.showNewStage(event,pass);
+//		frame.Alert(AlertType.INFORMATION, "Cambiar Contraseña", "Este Apartado será desarrollado "
+//    			+ "en el tercer Sprint");
+		System.out.println("cambiar contraseña");
+		frame.showNewStage(event,pass);
 	}
 
 	@FXML

@@ -20,12 +20,17 @@ import org.json.JSONObject;
 import com.SecurVision.exceptions.DAOExcepcion;
 import com.SecurVision.persistenciaDTO.Constants;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
+import com.SecurVision.userInterface.Frameworks;
+
+import javafx.scene.control.Alert.AlertType;
 
 public class PersonaDAOImp implements IPersonaDAO {
+	
+	Frameworks frame=new Frameworks();
 
-	/*
-	 * LISTAR PERSONAS
-	 * */
+	/**
+	 ** LISTAR PERSONAS **
+	 **/
 	@Override
 	public List<PersonaDTO> listarPersonas(){
 	//public static void main(String[]args){
@@ -44,11 +49,15 @@ public class PersonaDAOImp implements IPersonaDAO {
 
 			// Check for HTTP response code: 200 = success
 			if (code != 200) {
-				throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
+				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operación no permitida "
+		    			+ "HTTP Error "+ code);
+				//throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
 			}
 
 			ResponseHandler<String> handler = new BasicResponseHandler();
 			String body = handler.handleResponse(response);
+
+			System.out.println(body);
 
 			JSONArray jsonArray = new JSONArray(body);
 
@@ -72,9 +81,9 @@ public class PersonaDAOImp implements IPersonaDAO {
       return list_users;
 	}
 
-	/*
-	 * CREAR PERSONA
-	 * */
+	/**
+	 ** CREAR PERSONA **
+	 **/
 	@Override
 	public void crearPersona(PersonaDTO persona){
 	//public static void main(String[]args){
@@ -100,6 +109,8 @@ public class PersonaDAOImp implements IPersonaDAO {
 			int code = response.getStatusLine().getStatusCode();
 			// Check for HTTP response code: 200 = success
 			if (code != 201) {
+				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operación no permitida "
+		    			+ "HTTP Error"+ code);
 				throw new DAOExcepcion("Failed : HTTP error code : " + code);
 			}
 
@@ -117,9 +128,9 @@ public class PersonaDAOImp implements IPersonaDAO {
 
 	}
 
-	/*
-	 * BORRAR PERSONA
-	 * */
+	/**
+	 ** BORRAR PERSONA **
+	 **/
 	@Override
 	public void borrarPersona(String dni) throws DAOExcepcion {
 	//public static void main(String[]args){
@@ -128,7 +139,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
 			// Create new getRequest with below mentioned URL
-			String url_new = Constants.PERSONA_URL + "/"+dni+"/delete";
+			String url_new = Constants.PERSONA_URL + "/" + dni + "/delete";
 			HttpDelete deleteRequest = new HttpDelete(url_new);
 
 			// Execute your request and catch response
