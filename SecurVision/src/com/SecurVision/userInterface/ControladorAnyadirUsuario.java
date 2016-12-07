@@ -59,11 +59,11 @@ public class ControladorAnyadirUsuario{
 	Frameworks frame=new Frameworks();
 
 	Stage stage;
-	ControladorVentanaUsuario userWindow;
-	
+
 	private static final String user="view/VentanaUsuario.fxml";
+	private static final String guardia="view/AnyadirUsuarioGuardia.fxml";
 
-
+	private String dni;
 	private static final String APPLICATION_ICON = "img/icon.png";
 
 	@FXML
@@ -73,7 +73,7 @@ public class ControladorAnyadirUsuario{
 
 	@SuppressWarnings("static-access")
 	@FXML
-	void anyadir(ActionEvent event) throws DAOExcepcion {
+	void anyadir(ActionEvent event) throws DAOExcepcion, LogicException {
 		stage=(Stage) txtDni.getScene().getWindow();
 		boolean checkPass=checkElements();
 
@@ -93,18 +93,20 @@ public class ControladorAnyadirUsuario{
 							Integer.parseInt("1"),
 							Integer.parseInt("1")
 							);
-					frame.Alert(AlertType.INFORMATION,"Nuevo Usuario", "El usuario ha sido creado correctamente");	
 					stage.close();
-					frame.showNoModalStage(event,user);
+					if(btnGuardia.isSelected()){
+						frame.Alert(AlertType.INFORMATION,"Parámetros Guardia", "Como el usuario creado era un guadia, debe proporcionale credenciales de acceso");	
+						frame.showNoModalStage(event,guardia);
+					}else{
+						frame.Alert(AlertType.INFORMATION,"Nuevo Usuario", "El usuario ha sido creado correctamente en el sistema");	
+						frame.showNoModalStage(event,user);
+					}
 				} catch (NumberFormatException | LogicException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					frame.Alert(AlertType.ERROR,"Nuevo Usuario", "Error Creando nuevo usuario");
 				}
-
 			}
-		}else{
-			frame.Alert(AlertType.WARNING,"Nuevo Usuario", "Comprueba haber rellenado todos los campos");
 		}
 	}
 
@@ -143,35 +145,24 @@ public class ControladorAnyadirUsuario{
 				new FileChooser.ExtensionFilter("PNG", "*.png")
 				);
 	}
-	protected void Alert(AlertType type, String title, String content){
-		Alert alert = new Alert(type);
 
-		Stage dialog =(Stage)alert.getDialogPane().getScene().getWindow();
-		dialog.getIcons().add(new Image(APPLICATION_ICON));
 
-		alert.setTitle(title);
-		alert.setHeaderText(null);
-		alert.setContentText(content);
-
-		if(type!=AlertType.CONFIRMATION)
-			alert.showAndWait();
-		else{
-			Optional<ButtonType> result = alert.showAndWait();
-			if (result.get() == ButtonType.OK){
-				alert.close();
-			}
-		}
-
-	}
-	private boolean checkElements(){
+	private boolean checkElements() throws DAOExcepcion, LogicException{
 		boolean checked=false;
-		
-		if(!txtDni.getText().isEmpty()  &&
-		   !txtName.getText().isEmpty() &&
-		   !txtDni.getText().isEmpty()  )
-				checked=true;
+		dni = txtDni.getText();
+		if(!svApp.getInstance().containsPersona(dni)){
 
-		
+			if(!txtDni.getText().isEmpty()  &&
+					!txtName.getText().isEmpty() &&
+					!txtDni.getText().isEmpty()  )
+			{
+				checked=true;		
+			}else{
+				frame.Alert(AlertType.WARNING,"Nuevo Usuario", "Comprueba haber rellenado todos los campos");
+			}
+		}else	
+			frame.Alert(AlertType.ERROR,"Error Usuario", "El DNI ya existe en la Base de Datos");	
+
 		return checked;
 	}
 }
