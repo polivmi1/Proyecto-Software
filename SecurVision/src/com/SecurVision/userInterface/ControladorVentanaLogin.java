@@ -35,7 +35,7 @@ public class ControladorVentanaLogin {
 	private Stage mainStage;
 	private Stage Login;
 	private static final String mainScene="view/MainLayout.fxml";
-	private static final String mainWindow="view/VentanaPrincipalTest.fxml";
+	private static final String mainWindow="view/VentanaPrincipal.fxml";
 	
 	Frameworks frame= new Frameworks();
 
