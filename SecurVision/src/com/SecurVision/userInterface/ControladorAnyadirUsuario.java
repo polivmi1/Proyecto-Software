@@ -70,24 +70,24 @@ public class ControladorAnyadirUsuario{
 
 	private String dni;
 	private static final String APPLICATION_ICON = "img/icon.png";
-	
+
 	private ArrayList<String> zonas;
 
 	@FXML
 	private void initialize(){
-		
-		//TODO cambiar cuando esté Nivel, que zonas es para probar
+
+		//TODO cambiar cuando estï¿½ Nivel, que zonas es para probar
 		ObservableMap<Integer, Zona> mapZones = FXCollections.observableHashMap();
 		zonas= new ArrayList();
 
 
 		try {
 			mapZones.putAll(svApp.getInstance().listarZonas());
-			
+
 			for(int key : mapZones.keySet()){
 				Zona z = mapZones.get(key);
 				zonas.add(z.getDescription());
-			}		
+			}
 			fillCombo(comboNivel, zonas);
 		} catch (DAOExcepcion | LogicException e) {
 			// TODO Auto-generated catch block
@@ -122,10 +122,10 @@ public class ControladorAnyadirUsuario{
 							);
 					stage.close();
 					if(btnGuardia.isSelected()){
-						frame.Alert(AlertType.INFORMATION,"Parámetros Guardia", "Como el usuario creado era un guadia, debe proporcionale credenciales de acceso");	
+						frame.Alert(AlertType.INFORMATION,"Parï¿½metros Guardia", "Como el usuario creado era un guadia, debe proporcionale credenciales de acceso");
 						frame.showNoModalStage(event,guardia);
 					}else{
-						frame.Alert(AlertType.INFORMATION,"Nuevo Usuario", "El usuario ha sido creado correctamente en el sistema");	
+						frame.Alert(AlertType.INFORMATION,"Nuevo Usuario", "El usuario ha sido creado correctamente en el sistema");
 						frame.showNoModalStage(event,user);
 					}
 				} catch (NumberFormatException | LogicException e) {
@@ -160,13 +160,13 @@ public class ControladorAnyadirUsuario{
 	}
 
 	private static void configureFileChooser(
-			FileChooser fileChooser) { 
-		//Si dabas varias veces al boton "Buscar" duplicaba extensiones, así lo evitamos
+			FileChooser fileChooser) {
+		//Si dabas varias veces al boton "Buscar" duplicaba extensiones, asï¿½ lo evitamos
 		fileChooser.getExtensionFilters().clear();
 		fileChooser.setTitle("Selecciona Imagen para el Usuario");
 		fileChooser.setInitialDirectory(
 				new File(System.getProperty("user.home"))
-				);     
+				);
 		fileChooser.getExtensionFilters().addAll(
 				new FileChooser.ExtensionFilter("JPG", "*.jpg"),
 				new FileChooser.ExtensionFilter("PNG", "*.png")
@@ -183,16 +183,16 @@ public class ControladorAnyadirUsuario{
 					!txtName.getText().isEmpty() &&
 					!txtDni.getText().isEmpty()  )
 			{
-				checked=true;		
+				checked=true;
 			}else{
 				frame.Alert(AlertType.WARNING,"Nuevo Usuario", "Comprueba haber rellenado todos los campos");
 			}
-		}else	
-			frame.Alert(AlertType.ERROR,"Error Usuario", "El DNI ya existe en la Base de Datos");	
+		}else
+			frame.Alert(AlertType.ERROR,"Error Usuario", "El DNI ya existe en la Base de Datos");
 
 		return checked;
 	}
-	
+
 	private void fillCombo(ComboBox combo,ArrayList<String> zonas){
 		for(int index=0;index<zonas.size();index++)
 			combo.getItems().add(zonas.get(index));

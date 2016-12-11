@@ -28,9 +28,9 @@ public class ControladorPrincipal {
 	private Menu btnMinimize;
 
 	private Stage mainStage;
-	
+
 	private static final String user="view/VentanaUsuario.fxml";
-	private static final String pass="view/VentanaCambiarContraseña.fxml";
+	private static final String pass="view/VentanaCambiarContrasenya.fxml";
 
 
 	public ControladorPrincipal(){
@@ -45,12 +45,12 @@ public class ControladorPrincipal {
 	private void Cerrar(){
 		Platform.exit();
 	}
-	
+
 	@FXML
-	private void contraseña(ActionEvent event){
-//		frame.Alert(AlertType.INFORMATION, "Cambiar Contraseña", "Este Apartado será desarrollado "
+	private void contrasenya(ActionEvent event){
+//		frame.Alert(AlertType.INFORMATION, "Cambiar Contraseï¿½a", "Este Apartado serï¿½ desarrollado "
 //    			+ "en el tercer Sprint");
-		System.out.println("cambiar contraseña");
+		System.out.println("cambiar contraseï¿½a");
 		frame.showNewStage(event,pass);
 	}
 
@@ -66,22 +66,22 @@ public class ControladorPrincipal {
 		System.out.println("ventana Usuario");
 		frame.showNewStage(event,user);
 	}
-	
+
     @FXML
     void Zona(ActionEvent event) {
-    	frame.Alert(AlertType.INFORMATION, "Ventana Zona", "Este Apartado será desarrollado "
+    	frame.Alert(AlertType.INFORMATION, "Ventana Zona", "Este Apartado serï¿½ desarrollado "
     			+ "en el tercer Sprint");
     }
-    
+
     @FXML
     void Nivel(ActionEvent event) {
-    	frame.Alert(AlertType.INFORMATION, "Ventana Nivel", "Este Apartado será desarrollado "
+    	frame.Alert(AlertType.INFORMATION, "Ventana Nivel", "Este Apartado serï¿½ desarrollado "
     			+ "en el tercer Sprint");
     }
-    
+
     @FXML
     void Ayuda(ActionEvent event) {
-    	frame.Alert(AlertType.INFORMATION, "Ayuda", "Este Apartado será desarrollado "
+    	frame.Alert(AlertType.INFORMATION, "Ayuda", "Este Apartado serï¿½ desarrollado "
     			+ "en el tercer Sprint");
     }
 

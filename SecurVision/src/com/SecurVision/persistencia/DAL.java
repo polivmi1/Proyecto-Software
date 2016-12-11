@@ -3,6 +3,7 @@ package com.SecurVision.persistencia;
 import java.util.*;
 import com.SecurVision.logic.*;
 import com.SecurVision.persistenciaDTO.ImagenDTO;
+import com.SecurVision.persistenciaDTO.NivelDTO;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
 import com.SecurVision.persistenciaDTO.ZonaDTO;
 import com.SecurVision.exceptions.*;
@@ -83,13 +84,40 @@ public class DAL {
 		 return personaDAO.listarPersonas();
 	 }
 
+	/****  Métodos de ImagenDAO  ****/
+
 	public void subirImagen(ImagenDTO img) throws DAOExcepcion {
 		imagenDAO.subirImagen(img);
 	}
 
+	/****  Métodos de ZonaDAO  ****/
+
+	public void crearZona(ZonaDTO z) throws DAOExcepcion{
+		zonaDAO.crearZona(z);
+	}
+
+	public void borrarZona(int id) throws DAOExcepcion{
+		zonaDAO.borrarZona(id);
+	}
+
 	public List<ZonaDTO> listarZonas() throws DAOExcepcion {
-		// TODO Auto-generated method stub
 		return zonaDAO.listarZonas();
 	}
+
+
+	/**** Métodos de NivelDAO ****/
+
+	public void crearNivel(NivelDTO n) throws DAOExcepcion{
+		nivelDAO.crearNivel(n);
+	}
+
+	public void borrarNivel(int id) throws DAOExcepcion{
+		nivelDAO.borrarNivel(id);
+	}
+
+	public List<NivelDTO> listarNiveles() throws DAOExcepcion{
+		 return nivelDAO.listarNiveles();
+	 }
+
 
 }
