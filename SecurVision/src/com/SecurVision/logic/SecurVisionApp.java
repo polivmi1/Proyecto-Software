@@ -31,6 +31,7 @@ public class SecurVisionApp {
 		dal.crearPersona(new PersonaDTO(dni,nombre, apellidos, idNivel, idHorario));
 		Persona p = new Persona(dni, nombre, apellidos);
 		mapPersonas.put(dni,p);
+//dff
 		return p;
 	}
 
