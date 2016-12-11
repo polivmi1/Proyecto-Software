@@ -2,14 +2,15 @@ package com.SecurVision.logic;
 
 import java.io.File;
 
-public class Imagen extends File{
+public class Imagen{
 
 	private Persona persona;
+	private String url;
 
 		//Constructor
-	public Imagen(File arg0, String arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
+	public Imagen(String url, Persona persona) {
+		this.url = url;
+		this.persona = persona;
 	}
 
 		//Getters and Setters

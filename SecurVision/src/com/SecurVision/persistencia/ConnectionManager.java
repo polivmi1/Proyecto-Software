@@ -10,8 +10,8 @@ public class ConnectionManager {
 	
 	
 	public ConnectionManager(String dbname) throws ClassNotFoundException{
-		Class.forName("org.hsqldb.jdbcDriver");
-		sourceURL = "jdbc:hsqldb:hsql://localhost/"+dbname;
+		//Class.forName("org.hsqldb.jdbcDriver");
+		//sourceURL = "jdbc:hsqldb:hsql://localhost/"+dbname;
 	}
 	
 	public void connect() throws DAOExcepcion{

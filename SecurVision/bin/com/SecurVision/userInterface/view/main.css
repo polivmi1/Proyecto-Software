@@ -1,0 +1,111 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*# es para identificador ; . es para clase */
+
+
+#fondo {
+	-fx-background-image: url(../../../../img/acero.png);  
+	-fx-background-repeat: no-repeat; 
+   	-fx-background-position: center center;
+   	-fx-background-size: cover;
+}
+
+
+.button{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 35px; /* 12 */
+    -fx-text-fill: white;
+}
+
+.button:focused
+{
+    -fx-border-color: transparent, black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 2);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:pressed
+{
+    -fx-background-color: black;
+    -fx-text-fill: grey;
+}
+
+#label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.menu-bar{
+  -fx-background-color: peru;
+  -fx-border-color:  #f0cd90;
+ -fx-border-width: 2
+
+}
+
+.menu-bar .label {
+    -fx-font-size: 25 pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #dedede;
+
+}
+
+.menu:hover {
+    -fx-background-color: #20bbb5;
+}
+
+.menu-item .label{
+     -fx-font-size: 25 pt;
+     -fx-label-line-length: 12;
+}
+
+#update{
+    -fx-background-image: url(../../../../img/update.png);
+    -fx-background-repeat: no-repeat;   
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+
+
+#lion {
+    -fx-background-color: 
+        rgba(0,0,0,0.08),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: #242d35;
+    -fx-font-size: 12px;
+    }
+/*Sobre el botón */    
+ #lion:hover {
+    -fx-background-color: 
+        rgba(0,0,0,0.08),
+        linear-gradient(#5a61af, #51536d),
+        linear-gradient(#e4fbff 0%,#cee6fb 10%, #a5d3fb 50%, #88c6fb 51%, #d5faff 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: #242d35;
+    -fx-font-size: 12px;
+}
+/*Debería ser el pulsado */
+#lion:active {
+    -fx-background-color: 
+        rgba(0,0,255,0.8),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(#f0f0f0 25%, #fafafa 50%, #0f0f0f 51%, #f2f2f2 25%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: grey;
+    -fx-font-size: 12px;
+    }

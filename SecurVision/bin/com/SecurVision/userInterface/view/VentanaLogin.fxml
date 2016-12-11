@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="238.0" prefWidth="400.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SecurVision.userInterface.ControladorVentanaLogin">
+   <children>
+      <GridPane hgap="10.0" layoutX="10.0" layoutY="10.0" vgap="10.0">
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <children>
+            <Text id="bienvenido" stroke="#0000005f" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" GridPane.columnIndex="1" GridPane.columnSpan="2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="-20.0" />
+               </GridPane.margin>
+            </Text>
+            <Label id="label" text="Usuario" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label id="label" text="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="userText" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <PasswordField fx:id="passText" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+               <children>
+                  <Button id="lion" mnemonicParsing="false" onAction="#Aceptar" text="Iniciar Sesión" textOverrun="CLIP" />
+               </children>
+            </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowSpan="5">
+               <children>
+                  <ImageView id="bienvenido" fitHeight="150.0" fitWidth="200.0" preserveRatio="true" translateX="-15.0" translateY="-25.0">
+                     <image>
+                        <Image url="/img/LogoPre.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="-25.0" top="25.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Button id="lion" mnemonicParsing="false" onAction="#Salir" text="Salir" textOverrun="CLIP" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets top="8.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

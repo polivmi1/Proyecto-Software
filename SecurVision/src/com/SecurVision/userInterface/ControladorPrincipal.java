@@ -1,61 +1,94 @@
 package com.SecurVision.userInterface;
 
-import com.SecurVision.exceptions.LogicException;
-import javafx.application.Application;
+import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
 
 public class ControladorPrincipal {
-	
-	private MainApp mainApp;
-	
+
+	@FXML
+	private MenuBar menu;
+
+	Frameworks frame = new Frameworks();
+
+	@FXML
+	private Menu btnMinimize;
+
+	private Stage mainStage;
+
+	private static final String user="view/VentanaUsuario.fxml";
+	private static final String pass="view/VentanaCambiarContrasenya.fxml";
+
+
 	public ControladorPrincipal(){
-    }
+	}
+
+
 	@FXML
 	private void initialize(){
-		
+
 	}
 	@FXML
-    private void Cerrar(){
-		mainApp.getPrimaryStage().close();
+	private void Cerrar(){
+		Platform.exit();
 	}
+
 	@FXML
-    private void VentanaUsuario(){
-		mainApp.showVentanaUsuario();
+	private void contrasenya(ActionEvent event){
+//		frame.Alert(AlertType.INFORMATION, "Cambiar Contrase�a", "Este Apartado ser� desarrollado "
+//    			+ "en el tercer Sprint");
+		System.out.println("cambiar contrase�a");
+		frame.showNewStage(event,pass);
 	}
-	public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+
+	@FXML
+	private void btnMinimize(){
+		System.out.println("minimizo");
+		mainStage.setIconified(true);
+	}
+
+
+	@FXML
+	private void VentanaUsuario(ActionEvent event){
+		System.out.println("ventana Usuario");
+		frame.showNewStage(event,user);
+	}
+
+    @FXML
+    void Zona(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ventana Zona", "Este Apartado ser� desarrollado "
+    			+ "en el tercer Sprint");
     }
+
+    @FXML
+    void Nivel(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ventana Nivel", "Este Apartado ser� desarrollado "
+    			+ "en el tercer Sprint");
+    }
+
+    @FXML
+    void Ayuda(ActionEvent event) {
+    	frame.Alert(AlertType.INFORMATION, "Ayuda", "Este Apartado ser� desarrollado "
+    			+ "en el tercer Sprint");
+    }
+
+	public void registerStage(Stage stage) {
+		mainStage=stage;
+		Frameworks.makeDraggable(stage,menu);
+	}
+
+
 }
-		
-	/*private static final String LOGGIN_ADMIN= "loggin-admin.fxml";
-		 private static final String VER_PERFIL_USUARIO = "ver-perfil-usuario.fxml";
-		 //TODO a�adir constantes de tipo String para la vistas correspondientes a los
-		//casos de uso Crear Reserva y Listar Reservas de una Sucursal
-		 private Stage primaryStage;
-		 @FXML
-		 void logginGuardia(ActionEvent event) throws LogicException {
-		 initCasoDeUso(LOGGIN_ADMIN, ControladorLogginAdmin.class).show();
-		 }
-		 @FXML
-		 void listarClientes(ActionEvent event) throws LogicException {
-		 initCasoDeUso(VER_PERFIL_USUARIO, ControladorVerPerfilUsuario.class).show();
-		 }
-		 
-		 @FXML
-		 void salir(ActionEvent event) {
-		 Platform.exit();
-		 }
-		 public void setPrimaryStage(Stage primaryStage) {
-		 this.primaryStage = primaryStage;
-		 }
-		 private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista,
-		Class<T> controlClass) {
-		 return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass,
-		primaryStage, ControladorPrincipal.this);
-		 }
-		}
-*/

@@ -2,41 +2,48 @@ package com.SecurVision.persistencia;
 
 import java.util.*;
 import com.SecurVision.logic.*;
+import com.SecurVision.persistenciaDTO.ImagenDTO;
+import com.SecurVision.persistenciaDTO.NivelDTO;
+import com.SecurVision.persistenciaDTO.PersonaDTO;
+import com.SecurVision.persistenciaDTO.ZonaDTO;
 import com.SecurVision.exceptions.*;
 
 public class DAL {
-		 private static DAL dal;
-		 private ICheckeoDAO checkeoDAO;
-		 private IPersonaDAO personaDAO;
-		 private IUsuarioDAO usuarioDAO;
-		 private IZonaDAO zonaDAO;
-		 private INivelDAO nivelDAO;
+	private static DAL dal;
+	private ICheckeoDAO checkeoDAO;
+	private IPersonaDAO personaDAO;
+	private IUsuarioDAO usuarioDAO;
+	private IZonaDAO zonaDAO;
+	private INivelDAO nivelDAO;
+	private IImagenDAO	imagenDAO;
 
-		 //private IFranjaHoraria franjaHorariaDAO;
+	//private IFranjaHoraria franjaHorariaDAO;
 
-		 // constructor privado
-		 private DAL() throws DAOExcepcion {
-			 // Objectos para comunicarse con la capa de acceso a datos
-			 checkeoDAO = new CheckeoDAOImp();
-			 personaDAO = new PersonaDAOImp();
-			 usuarioDAO = new UsuarioDAOImp();
-			 zonaDAO = new ZonaDAOImp();
-			 nivelDAO = new NivelDAOImp();
+	// constructor privado
+	private DAL() throws DAOExcepcion {
+		// Objectos para comunicarse con la capa de acceso a datos
+		checkeoDAO = new CheckeoDAOImp();
+		personaDAO = new PersonaDAOImp();
+		usuarioDAO = new UsuarioDAOImp();
+		zonaDAO = new ZonaDAOImp();
+		nivelDAO = new NivelDAOImp();
+		imagenDAO = new ImagenDAOImp();
+	}
 
-			 //franjaHorariaDAO = new FranjaHorariaDAOImp();
-
-		 }
-
-		 // Patron Singleton
-		 public static DAL dameDAL() throws DAOExcepcion {
-			 if(dal==null)
-				 dal = new DAL();
-			 return dal;
-		 }
+	//franjaHorariaDAO = new FranjaHorariaDAOImp();
 
 
-		 /****	Metodos para listar objetos	****/
-		 /*
+
+	// Patron Singleton
+	public static DAL dameDAL() throws DAOExcepcion {
+		if(dal==null)
+			dal = new DAL();
+		return dal;
+	}
+
+
+	/****	Metodos para listar objetos	****/
+	/*
 		 public List<Checkeo> listarCheckeos() throws DAOExcepcion{
 			 return checkeoDAO.listarCheckeos();
 		 }
@@ -44,15 +51,12 @@ public class DAL {
 		 public List<Persona> listarPersonas() throws DAOExcepcion{
 			 return personaDAO.listarPersonas();
 		 }
-		 */
-		 public List<Zona> listarZonas() throws DAOExcepcion{
-			 return zonaDAO.listarZonas();
-		 }
+	 */
 
 
-		 /****	Metodos para encontrar objetos por su ID	****/
+	/****	Metodos para encontrar objetos por su ID	****/
 
-		 /*
+	/*
 		 public Checkeo encontrarCheckeoPorCod(String cod) throws DAOExcepcion{
 			 return checkeoDAO.encontrarCheckeoPorCod(cod);
 		 }
@@ -60,25 +64,60 @@ public class DAL {
 		 public Persona encontrarPersonaPorCod(String cod) throws DAOExcepcion{
 			 return personaDAO.encontrarPersonaPorCod(cod);
 		 }
-		 */
+
 
 		 public Zona encontrarZonaPorCod(int cod) throws DAOExcepcion{
 			 return zonaDAO.encontrarZonaPorCod(cod);
-		 }
-
-		 /****	Metodos de creacion	****/
-
-		 /*
-		 public void crearCheckeo(Checkeo chk) throws DAOExcepcion{
-			 checkeoDAO.crearCheckeo(chk);
 		 }*/
 
-		 public void crearPersona(Persona p) throws DAOExcepcion{
-			 personaDAO.crearPersona(p);
-		 }
+	/****	Metodos de PersonaDAO	****/
 
-		 public void crearZona(Zona z) throws DAOExcepcion{
-			 zonaDAO.crearZona(z);
-		 }
+	public void crearPersona(PersonaDTO p) throws DAOExcepcion{
+		personaDAO.crearPersona(p);
+	}
+
+	public void borrarPersona(String dni) throws DAOExcepcion{
+		personaDAO.borrarPersona(dni);
+	}
+
+	public List<PersonaDTO> listarPersonas() throws DAOExcepcion{
+		 return personaDAO.listarPersonas();
+	 }
+
+	/****  Métodos de ImagenDAO  ****/
+
+	public void subirImagen(ImagenDTO img) throws DAOExcepcion {
+		imagenDAO.subirImagen(img);
+	}
+
+	/****  Métodos de ZonaDAO  ****/
+
+	public void crearZona(ZonaDTO z) throws DAOExcepcion{
+		zonaDAO.crearZona(z);
+	}
+
+	public void borrarZona(int id) throws DAOExcepcion{
+		zonaDAO.borrarZona(id);
+	}
+
+	public List<ZonaDTO> listarZonas() throws DAOExcepcion {
+		return zonaDAO.listarZonas();
+	}
+
+
+	/**** Métodos de NivelDAO ****/
+
+	public void crearNivel(NivelDTO n) throws DAOExcepcion{
+		nivelDAO.crearNivel(n);
+	}
+
+	public void borrarNivel(int id) throws DAOExcepcion{
+		nivelDAO.borrarNivel(id);
+	}
+
+	public List<NivelDTO> listarNiveles() throws DAOExcepcion{
+		 return nivelDAO.listarNiveles();
+	 }
+
 
 }
