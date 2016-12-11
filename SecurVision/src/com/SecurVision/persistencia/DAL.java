@@ -4,6 +4,7 @@ import java.util.*;
 import com.SecurVision.logic.*;
 import com.SecurVision.persistenciaDTO.ImagenDTO;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
+import com.SecurVision.persistenciaDTO.ZonaDTO;
 import com.SecurVision.exceptions.*;
 
 public class DAL {
@@ -84,6 +85,11 @@ public class DAL {
 
 	public void subirImagen(ImagenDTO img) throws DAOExcepcion {
 		imagenDAO.subirImagen(img);
+	}
+
+	public List<ZonaDTO> listarZonas() throws DAOExcepcion {
+		// TODO Auto-generated method stub
+		return zonaDAO.listarZonas();
 	}
 
 }

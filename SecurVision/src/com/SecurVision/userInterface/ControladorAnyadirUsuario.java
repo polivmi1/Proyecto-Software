@@ -2,6 +2,7 @@ package com.SecurVision.userInterface;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 
 import com.SecurVision.exceptions.DAOExcepcion;
@@ -10,9 +11,13 @@ import com.SecurVision.logic.HorarioEmpleo;
 import com.SecurVision.logic.Nivel;
 import com.SecurVision.logic.Persona;
 import com.SecurVision.logic.SecurVisionApp;
+import com.SecurVision.logic.Zona;
 import com.SecurVision.persistencia.DAL;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
@@ -65,10 +70,32 @@ public class ControladorAnyadirUsuario{
 
 	private String dni;
 	private static final String APPLICATION_ICON = "img/icon.png";
+	
+	private ArrayList<String> zonas;
 
 	@FXML
 	private void initialize(){
+		
+		//TODO cambiar cuando esté Nivel, que zonas es para probar
+		ObservableMap<Integer, Zona> mapZones = FXCollections.observableHashMap();
+		zonas= new ArrayList();
 
+
+		try {
+			mapZones.putAll(svApp.getInstance().listarZonas());
+			
+			for(int key : mapZones.keySet()){
+				Zona z = mapZones.get(key);
+				zonas.add(z.getDescription());
+			}		
+			fillCombo(comboNivel, zonas);
+		} catch (DAOExcepcion | LogicException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		System.out.println(zonas.size());
 	}
 
 	@SuppressWarnings("static-access")
@@ -164,5 +191,10 @@ public class ControladorAnyadirUsuario{
 			frame.Alert(AlertType.ERROR,"Error Usuario", "El DNI ya existe en la Base de Datos");	
 
 		return checked;
+	}
+	
+	private void fillCombo(ComboBox combo,ArrayList<String> zonas){
+		for(int index=0;index<zonas.size();index++)
+			combo.getItems().add(zonas.get(index));
 	}
 }
