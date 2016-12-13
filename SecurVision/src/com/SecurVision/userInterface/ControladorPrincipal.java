@@ -30,7 +30,7 @@ public class ControladorPrincipal {
 	private Stage mainStage;
 
 	private static final String user="view/VentanaUsuario.fxml";
-	private static final String pass="view/VentanaCambiarContrasenya.fxml";
+	private static final String pass="view/VentanaCambiarContraseña.fxml";
 
 
 	public ControladorPrincipal(){

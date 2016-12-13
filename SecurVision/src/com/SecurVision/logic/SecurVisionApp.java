@@ -12,6 +12,7 @@ import com.SecurVision.persistencia.DAL;
 import com.SecurVision.persistenciaDTO.ImagenDTO;
 import com.SecurVision.persistenciaDTO.NivelDTO;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
+import com.SecurVision.persistenciaDTO.UsuarioDTO;
 import com.SecurVision.persistenciaDTO.ZonaDTO;
 
 public class SecurVisionApp {
@@ -19,6 +20,7 @@ public class SecurVisionApp {
 	private static SecurVisionApp instance;
 
 	private HashMap<String, Persona>mapPersonas;
+	private HashMap<String, Usuario> mapUsuarios;
 	private HashMap<Integer, Nivel>mapNiveles;
 	private HashMap<Integer, Zona> mapZonas;
 
@@ -81,6 +83,35 @@ public class SecurVisionApp {
 			Imagen image = new Imagen(url, p);
 			return image;
 	}
+
+	/**
+	 * USUARIO
+	 **/
+
+	//Crear Usuario
+	public Usuario crearUsuario(String dni, String nombre, String apellidos, int idNivel, int idHorario, String username, String password) throws DAOExcepcion{
+		//NECESITAMOS CREAR PRIMERO AL USUARIO COMO PERSONA
+		dal.crearPersona(new PersonaDTO(dni,nombre, apellidos, idNivel, idHorario));
+		dal.crearUsuario(new UsuarioDTO(dni,nombre,apellidos,username, password));
+
+		Persona p = new Persona(dni, nombre, apellidos);
+		Usuario u = new Usuario(dni, nombre, apellidos, username, password);
+
+		mapPersonas.put(dni,p);
+		mapUsuarios.put(dni, u);
+		return u;
+	}
+
+	//Borrar Usuario
+		public void borrarUsuario(String dni) throws DAOExcepcion{
+			Persona p= mapPersonas.get(dni);
+			Usuario u = mapUsuarios.get(dni);
+			//NECESITAMOS BORRAR TAMBIEN LA PERSONA
+			dal.borrarPersona(dni);
+			dal.borrarUsuario(dni);
+			mapPersonas.remove(dni, p);
+			mapUsuarios.remove(dni, u);
+		}
 
 	/**
 	 * NIVEL

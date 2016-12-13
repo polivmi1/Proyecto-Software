@@ -25,7 +25,7 @@ import com.SecurVision.userInterface.Frameworks;
 import javafx.scene.control.Alert.AlertType;
 
 public class PersonaDAOImp implements IPersonaDAO {
-	
+
 	Frameworks frame=new Frameworks();
 
 	/**
@@ -49,7 +49,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 
 			// Check for HTTP response code: 200 = success
 			if (code != 200) {
-				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operación no permitida "
+				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operaciï¿½n no permitida "
 		    			+ "HTTP Error "+ code);
 				//throw new DAOExcepcion("Failed : HTTP error code : " + code + response.getStatusLine());
 			}
@@ -98,7 +98,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 													+ "\"nombre\":\"" + persona.getNombre() + "\","
 													+ "\"apellidos\":\"" + persona.getApellidos() + "\","
 													+ " \"nivel_id\":\"" + persona.getIdNivel() + "\","
-													+ "\"horario_id\":\"" + persona.getIdHorario() +"\","
+													+ "\"horario_id\":\"" + "1" +"\","
 													+ "\"isUsuario\":\"" + "0" + "\"}",
 													ContentType.create("application/json"));
 			postRequest.setEntity(json_req);
@@ -109,7 +109,7 @@ public class PersonaDAOImp implements IPersonaDAO {
 			int code = response.getStatusLine().getStatusCode();
 			// Check for HTTP response code: 200 = success
 			if (code != 201) {
-				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operación no permitida "
+				frame.Alert(AlertType.ERROR, "Servidor No operativo", "Operaciï¿½n no permitida "
 		    			+ "HTTP Error"+ code);
 				throw new DAOExcepcion("Failed : HTTP error code : " + code);
 			}
@@ -158,6 +158,5 @@ public class PersonaDAOImp implements IPersonaDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }

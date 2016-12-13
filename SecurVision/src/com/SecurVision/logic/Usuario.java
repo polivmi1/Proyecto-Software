@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Usuario extends Persona{
 
 	private String username;
-	private String email;
 	private String password;
 
 	//Constructor
-	public Usuario(String id, String nombre, String apellidos, ArrayList<Imagen>imagenes, String user, String email, String pass){
+	public Usuario(String id, String nombre, String apellidos, String user, String pass){
 		super(id, nombre, apellidos);
 		this.username = user;
-		this.email = email;
 		this.password = pass;
 	}
 
@@ -23,14 +21,6 @@ public class Usuario extends Persona{
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {

@@ -5,6 +5,7 @@ import com.SecurVision.logic.*;
 import com.SecurVision.persistenciaDTO.ImagenDTO;
 import com.SecurVision.persistenciaDTO.NivelDTO;
 import com.SecurVision.persistenciaDTO.PersonaDTO;
+import com.SecurVision.persistenciaDTO.UsuarioDTO;
 import com.SecurVision.persistenciaDTO.ZonaDTO;
 import com.SecurVision.exceptions.*;
 
@@ -17,7 +18,6 @@ public class DAL {
 	private INivelDAO nivelDAO;
 	private IImagenDAO	imagenDAO;
 
-	//private IFranjaHoraria franjaHorariaDAO;
 
 	// constructor privado
 	private DAL() throws DAOExcepcion {
@@ -88,6 +88,16 @@ public class DAL {
 
 	public void subirImagen(ImagenDTO img) throws DAOExcepcion {
 		imagenDAO.subirImagen(img);
+	}
+
+	/**** Métodos de UsuarioDAO ****/
+
+	public void crearUsuario(UsuarioDTO u) throws DAOExcepcion{
+		usuarioDAO.crearUsuario(u);
+	}
+
+	public void borrarUsuario(String dni) throws DAOExcepcion{
+		usuarioDAO.borrarUsuario(dni);
 	}
 
 	/****  Métodos de ZonaDAO  ****/

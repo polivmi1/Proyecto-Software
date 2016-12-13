@@ -14,7 +14,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#contraseña" text="Cambiar Contraseña" />
+              <MenuItem mnemonicParsing="false" onAction="#contrasenya" text="Cambiar Contraseña" />
                   <MenuItem mnemonicParsing="false" onAction="#Cerrar" text="Cerrar" />
             </items>
           </Menu>

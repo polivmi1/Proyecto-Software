@@ -1,9 +1,10 @@
 package com.SecurVision.persistencia;
 
-import com.SecurVision.logic.*;
+import com.SecurVision.persistenciaDTO.UsuarioDTO;
 import com.SecurVision.exceptions.*;
-import java.util.List;
 
 public interface IUsuarioDAO {
+	public void crearUsuario(UsuarioDTO p)throws DAOExcepcion;
+	public void borrarUsuario(String dni)throws DAOExcepcion;
 
 }
