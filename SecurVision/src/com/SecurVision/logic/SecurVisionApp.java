@@ -89,29 +89,21 @@ public class SecurVisionApp {
 	 **/
 
 	//Crear Usuario
-	public Usuario crearUsuario(String dni, String nombre, String apellidos, int idNivel, int idHorario, String username, String password) throws DAOExcepcion{
-		//NECESITAMOS CREAR PRIMERO AL USUARIO COMO PERSONA
-		dal.crearPersona(new PersonaDTO(dni,nombre, apellidos, idNivel, idHorario));
+	public Usuario crearUsuario(String dni, String nombre, String apellidos, String username, String password) throws DAOExcepcion{
 		dal.crearUsuario(new UsuarioDTO(dni,nombre,apellidos,username, password));
-
-		Persona p = new Persona(dni, nombre, apellidos);
 		Usuario u = new Usuario(dni, nombre, apellidos, username, password);
-
-		mapPersonas.put(dni,p);
 		mapUsuarios.put(dni, u);
 		return u;
 	}
 
 	//Borrar Usuario
-		public void borrarUsuario(String dni) throws DAOExcepcion{
-			Persona p= mapPersonas.get(dni);
-			Usuario u = mapUsuarios.get(dni);
-			//NECESITAMOS BORRAR TAMBIEN LA PERSONA
-			dal.borrarPersona(dni);
-			dal.borrarUsuario(dni);
-			mapPersonas.remove(dni, p);
-			mapUsuarios.remove(dni, u);
-		}
+	public void borrarUsuario(String dni) throws DAOExcepcion{
+		//Persona p= mapPersonas.get(dni);
+		Usuario u = mapUsuarios.get(dni);
+		dal.borrarUsuario(dni);
+		//mapPersonas.remove(dni, p);
+		mapUsuarios.remove(dni, u);
+	}
 
 	/**
 	 * NIVEL
